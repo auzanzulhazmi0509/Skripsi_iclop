@@ -30,10 +30,10 @@ class ValidatorController extends Controller
 
     public function connectToDatabase($dbname)
     {
-        if (!pg_connect("host = localhost port = 5432 dbname=$dbname user=postgres  password=auzanzulhazmi")) {
+        if (!pg_connect("host = localhost port = 5432 dbname=$dbname user=postgres  password=postgres")) {
             throw new \Exception('SYSTEM_ERROR: Cant connect to database!');
         }
-        return pg_connect("host = localhost port = 5432 dbname=$dbname user=postgres  password=auzanzulhazmi");
+        return pg_connect("host = localhost port = 5432 dbname=$dbname user=postgres  password=postgres");
     }
 
     public function disconnectFromDatabase($connection)
@@ -101,11 +101,11 @@ class ValidatorController extends Controller
         $this->topic = $test[0]->topic;
         $this->dbname = $test[0]->dbname . Auth::user()->id;
 
-        if (strcmp($test[0]->topic, "SELECT Database") == 0) {
-            if (strcasecmp($request->code, "select * from kategori;") == 0) {
+        if (strcmp($test[0]->topic, "CREATE Database") == 0) {
+            if (strcasecmp($request->code, "create database my_playlist;") == 0) {
                 $finalResult = "<div id='output-text' class='w-100'>";
                 $finalResult .= "<div class='alert alert-success'>";
-                $finalResult .= "<i class='fas fa-check'> </i> " . "menampilkan database kategori";
+                $finalResult .= "<i class='fas fa-check'> </i> " . "Membuat database my_playlist";
                 $finalResult .= "</div>";
                 $finalResult .= "</div>";
             } else {
@@ -115,6 +115,7 @@ class ValidatorController extends Controller
                 $finalResult .= "</div>";
                 $finalResult .= "</div>";
             }
+
             //Display test result
             return response()->json(['result' => $finalResult]);
         } else if (strcmp($test[0]->topic, "DROP Database") == 0) {
@@ -191,13 +192,13 @@ class ValidatorController extends Controller
         $this->dbname = $test[0]->dbname . Auth::user()->id;
 
         //Get Connection 1
-        if (strcmp($test[0]->topic, "SELECT Database") == 0) {
+        if (strcmp($test[0]->topic, "CREATE Database") == 0) {
 
-            if (strcasecmp($request->code, "SELECT * FROM kategori;") == 0) {
+            if (strcasecmp($request->code, "create database my_playlist;") == 0) {
                 $this->isAllowSubmit = true;
                 $finalResult = "<div id='output-text' class='w-100'>";
                 $finalResult .= "<div class='alert alert-success'>";
-                $finalResult .= "<i class='fas fa-check'> </i> " . "Membuat database kategori";
+                $finalResult .= "<i class='fas fa-check'> </i> " . "Membuat database my_playlist";
                 $finalResult .= "</div>";
                 $finalResult .= "</div>";
             } else {

@@ -44,7 +44,7 @@
             processing: true,
             info: true,
             serverSide: true,
-            ajax: "{{ route('student.exerciseQuestion.questionList', ['exercise_id' => $exercise_id]) }}",
+            ajax: "{{ route('student.exerciseQuestion.questionList', ['exercise_id' => $exercise_id])  }}",
             columns: [{
                     data: "no",
                     name: "no"

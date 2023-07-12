@@ -34,8 +34,9 @@
                                     <div class="input-group">
                                         <select class="form-control" name="topic">
                                             <option selected disabled>- Pilih Topik -</option>
-                                            <option value="SELECT Database">SELECT Database</option>
-                                            <option value="CREATE Table">CREATE Table</option>
+                                            <option value="SELECT Table">SELECT Table</option>
+                                            {{-- <option value="CREATE Table">CREATE Table</option> --}}
+                                            <option value="Topic WHERE">Topic WHERE</option>
                                             <option value="ALTER Table">ALTER Table</option>
                                             <option value="DROP Database">DROP Database</option>
                                             <option value="DROP Table">DROP Table</option>

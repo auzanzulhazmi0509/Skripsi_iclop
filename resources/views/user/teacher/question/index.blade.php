@@ -1,13 +1,13 @@
 @extends('user.teacher.master')
 
-@section('title', 'iCLOP | Soal Ujian')
+@section('title', 'iCLOP | Bank Soal')
 
 @section('content-header')
     <div class="content-header">
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <p>Soal Ujian</p>
+                    <p>Bank Soal</p>
                 </div>
                 <div class="col-sm-6">
                     <button class="float-sm-right btn btn-primary" data-toggle="modal" data-target="#addModal">Tambah
@@ -72,7 +72,8 @@
                                             <div class="input-group">
                                                 <select class="form-control" name="topic">
                                                     <option selected disabled>- Pilih Topik -</option>
-                                                    <option value="SELECT Database">SELECT Database</option>
+                                                    <option value="SELECT Table">SELECT Table</option>
+                                                    <option value="Topic WHERE">Topic WHERE</option>
                                                     <option value="CREATE Table">CREATE Table</option>
                                                     <option value="ALTER Table">ALTER Table</option>
                                                     <option value="DROP Table">DROP Table</option>
@@ -124,7 +125,7 @@
                                             <label for="required_table">Required Table</label>
                                             <span class="fas fa-question" data-toggle="tooltip_requiredTable"
                                                 data-placement="right"
-                                                title="TIDAK WAJIB DIISI. Digunakan untuk membuat tabel yang dibutuhkan untuk pembelajaran."></span>
+                                                title="TIDAK WAJIB DIISI. Digunakan untuk membuat tabel yang dibutuhkan untuk pemebelajaran."></span>
                                             <div class="input-group">
                                                 <textarea rows="5" type="text" class="form-control" name="required_table" placeholder="Required table"></textarea>
                                                 <div class="input-group-append">

@@ -21,7 +21,7 @@ class ExerciseQuestionController extends Controller
                 return '<div class="btn-group" role="group">
             <button id="assignQuestionToExerciseBtn" type="button" class="btn btn-info btn-block" data-id="' . $row['id'] . '">
             <i class="fa fa-arrow-left"></i>
-            </button> 
+            </button>
             </div>';
             })
             ->rawColumns(['actions'])
@@ -45,7 +45,7 @@ class ExerciseQuestionController extends Controller
                 return '<div class="btn-group" role="group">
             <button id="removeQuestionFromExerciseBtn" type="button" class="btn btn-danger btn-block" data-id="' . $row->question_id . '">
             <i class="fa fa-arrow-right"></i>
-            </button> 
+            </button>
             </div>';
             })
             ->rawColumns(['actions'])
@@ -79,7 +79,7 @@ class ExerciseQuestionController extends Controller
             ->addColumn('actions', function ($row) {
                 $route = "question/" . $row->exercise_id . "/" . $row->no;
                 return '<div class="btn-group" role="group">
-            <a href="' . $route . '" class="btn btn-primary btn-block"><i class="fa fa-pen"></i></a> 
+            <a href="' . $route . '" class="btn btn-primary btn-block"><i class="fa fa-pen"></i></a>
             </div>';
             })
             ->rawColumns(['actions'])
@@ -131,8 +131,7 @@ class ExerciseQuestionController extends Controller
     {
 
         $question = ExerciseQuestion::updateOrCreate(
-            ['exercise_id' => $request->exercise_id, 'question_id' => $request->question_id],
-            ['isRemoved' => 1]
+            ['exercise_id' => $request->exercise_id, 'question_id' => $request->question_id], ['isRemoved' => 1]
         );
 
         if (!$question) {

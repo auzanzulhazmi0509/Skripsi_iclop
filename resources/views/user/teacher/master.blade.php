@@ -89,7 +89,7 @@
                         data-accordion="false">
                         <li class="nav-item">
                             <a href="{{ route('teacher.dashboard') }}" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <i class="fa-solid fa-gauge"></i>
                                 <p>
                                     Dashboard
                                 </p>
@@ -106,19 +106,19 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{ route('teacher.exercise') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="fa-solid fa-check"></i>
                                         <p>Latihan</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('teacher.question') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Soal Ujian</p>
+                                        <i class="fa-solid fa-check"></i>
+                                        <p>Daftar Soal</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('teacher.class') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="fa-solid fa-check"></i>
                                         <p>Kelas</p>
                                     </a>
                                 </li>
@@ -167,7 +167,7 @@
             <strong>Copyright &copy; 2023 <a href="#">iCLOP</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 1.2.0
+                <b>Version</b> 1.3.0
             </div>
         </footer>
     </div>

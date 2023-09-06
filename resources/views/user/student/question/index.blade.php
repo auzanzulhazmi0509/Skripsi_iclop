@@ -19,10 +19,12 @@
         <div class="container">
             <div class="row">
                 @forelse ($soal as $item)
-                    <div class="col-md-6">
-                        <embed src="{{ Storage::disk('local')->url('/ddl_guidance/' . $item->guide) }}" type="application/pdf"
-                            style="width: 100%; height: 500px;">
-                    </div>
+                <div class="col-md-6">
+                    <embed src="{{Storage::disk('local')->url('/dql_soal/'. $item->guide)}}" type="application/pdf" style="width: 100%; height: 500px;">
+                </div>
+                    {{-- <div class="col-md-6">
+                        <embed src="{{ Storage::disk('local')->url('/dql_soal/' . $item->guide) }}" type="application/pdf" style="width: 100%; height: 500px;">
+                    </div> --}}
 
                     <div class="col-md-6">
                         <div class="editor" id="editor" style="height: 200px;"></div>

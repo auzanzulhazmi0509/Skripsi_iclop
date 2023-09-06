@@ -1,22 +1,19 @@
 <?php
 
-use App\ExerciseQuestion;
+use App\Models\ExerciseQuestion;
 use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\ClassesStudentController;
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\ExerciseQuestionController;
 use App\Http\Controllers\ExerciseResultController;
 use App\Http\Controllers\QuestionController;
-use App\Http\Controllers\ValidatorController;
 use App\Http\Controllers\ValidatorXController;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
-
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentController;
-
 use App\Http\Controllers\AcademicYearController;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -114,16 +111,12 @@ Route::group(['prefix' => 't', 'midddleware' => ['auth', 'isTeacher']], function
 
 Route::group(['prefix' => 's', 'midddleware' => ['auth', 'isStudent']], function () {
     Route::get('dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard');
-
-    // Route::post('runtest', [ValidatorController::class, 'runtest'])->name('student.runtest');
-    // Route::post('submittest', [ValidatorController::class, 'submittest'])->name('student.submittest');
-
     Route::post('runtest', [ValidatorXController::class, 'runtest'])->name('student.runtest');
+    // Route::post('runtest', [ValidatorController::class, 'displaytestresult'])->name('student.displaytestresult');
     Route::post('submittest', [ValidatorXController::class, 'submittest'])->name('student.submittest');
-
     Route::get('exercise', [StudentController::class, 'exercise'])->name('student.exercise');
-    Route::get('exercise-question/{exercise_id}', [StudentController::class, 'exerciseQuestion'])->name('student.exerciseQuestion');
 
+    Route::get('exercise-question/{exercise_id}', [StudentController::class, 'exerciseQuestion'])->name('student.exerciseQuestion');
     Route::get('exercise-question/question/{exercise_id}', [ExerciseQuestionController::class, 'getExerciseQuestionList'])->name('student.exerciseQuestion.questionList');
     Route::get('exercise-question/question/{exercise_id}/{question_no}', [ExerciseQuestionController::class, 'getExerciseQuestionItem'])->name('student.exerciseQuestion.question');
 

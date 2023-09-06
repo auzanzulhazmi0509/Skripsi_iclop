@@ -28,7 +28,7 @@
             </div>
             <div class="card-body">
                 <p class="login-box-msg">Sign In</p>
-                <form action="{{ route('login') }}" method="post">
+                <form action="{{ route('login') }}" method="post" style="font-size: 16px;">
                     @csrf
                     @if (Session::get('error'))
                         <div class="alert alert-danger">
@@ -46,7 +46,7 @@
                         </div>
                         {{-- <span class="text-danger error-text email_error"></span> --}}
                         @error('email')
-                            <span class="invalid-feedback" role="alert">
+                            <span class="invalid-feedback" role="alert" style="font-size: 16px;">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
@@ -62,7 +62,7 @@
                         </div>
                         {{-- <span class="text-danger error-text password_error"></span> --}}
                         @error('password')
-                        <span class="invalid-feedback" role="alert">
+                        <span class="invalid-feedback" role="alert" style="font-size: 16px;">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror

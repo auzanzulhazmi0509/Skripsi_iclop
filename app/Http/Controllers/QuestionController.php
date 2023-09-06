@@ -18,7 +18,7 @@ class QuestionController extends Controller
                 return '<div class="btn-group" role="group">
             <button id="detailBtn" type="button" class="btn btn-primary btn-block" data-id="' . $row->id . '">
             <i class="fa fa-eye"></i>
-            </button> 
+            </button>
             </div>';
             })
             ->rawColumns(['actions'])
@@ -36,13 +36,14 @@ class QuestionController extends Controller
             'required_table' => 'string',
             'test_code' => 'required|string',
             'guidance' => 'required|mimes:pdf|max:2048',
+            // 'test_result' => 'required|string',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['code' => 0, 'error' => $validator->errors()->toArray()]);
         } else {
 
-            $path = 'ddl_guidance/';
+            $path = 'dql_soal/';
             $file = $request->file('guidance');
             $file_name = $file->getClientOriginalName();
 
@@ -57,6 +58,7 @@ class QuestionController extends Controller
                     'required_table' => $request->required_table,
                     'test_code' => $request->test_code,
                     'guide' => $file_name,
+                    // 'test_result' => $request->test_result,
                 ]);
                 return response()->json(['code' => 1, 'msg' => 'BERHASIL menambahkan soal baru.']);
             } else {
@@ -76,7 +78,7 @@ class QuestionController extends Controller
     {
         $question_id = $request->qid;
         $task = Question::find($question_id);
-        $path = 'ddl_guidance/';
+        $path = 'dql_soal/';
 
         $validator = Validator::make($request->all(), [
             'title' => 'required|string',
@@ -84,6 +86,7 @@ class QuestionController extends Controller
             'dbname' => 'required|string',
             'description' => 'required|string',
             'test_code' => 'required|string',
+            // 'test_result' => 'required|string',
             'guidance_update' => 'mimes:pdf|max:2048|unique:questions,guide',
         ]);
 
@@ -108,6 +111,7 @@ class QuestionController extends Controller
                         'required_table' => $request->required_table,
                         'test_code' => $request->test_code,
                         'guide' => $file_name,
+                        // 'test_result' => $request->test_result,
                     ]);
                     return response()->json(['code' => 1, 'msg' => 'BERHASIL memperbarui data soal.']);
                 }
@@ -119,6 +123,7 @@ class QuestionController extends Controller
                     'description' => $request->description,
                     'required_table' => $request->required_table,
                     'test_code' => $request->test_code,
+                    // 'test_result' => $request->test_result,
                 ]);
                 return response()->json(['code' => 1, 'msg' => 'BERHASIL memperbarui data soal.']);
             }

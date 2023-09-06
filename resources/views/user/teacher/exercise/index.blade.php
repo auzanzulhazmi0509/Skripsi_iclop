@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <p>Kelas</p>
+                    <p>Daftar Latihan</p>
                 </div>
             </div>
         </div>
@@ -56,14 +56,14 @@
                 <div class="col-lg-8">
                     <form action="" method="GET">
                         @csrf
-                        <div class="input-group">
+                        {{-- <div class="input-group">
                             <input type="text" class="form-control" placeholder="Type your keywords here">
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-default">
                                     <i class="fa fa-search"></i>
                                 </button>
                             </div>
-                        </div>
+                        </div> --}}
                     </form>
                     <div class="row mt-3">
                         @forelse ($exercise as $item)

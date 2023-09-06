@@ -15,6 +15,7 @@ class Question extends Model
         'description',
         'required_table',
         'test_code',
+        // 'test_result',
         'guide'
     ];
 }

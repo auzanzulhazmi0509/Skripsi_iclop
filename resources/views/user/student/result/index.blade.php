@@ -19,7 +19,7 @@
             <div class="row">
                 @forelse ($exercise as $item)
                     <div class="col-lg-4">
-                        <div class="small-box bg-dark">
+                        <div class="small-box bg-white">
                             <div class="inner">
                                 <h3>{{ $item->{'name'} }}</h3>
                                 <p>{{ $item->year->{'name'} }}</p>

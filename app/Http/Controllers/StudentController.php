@@ -43,9 +43,12 @@ class StudentController extends Controller
             ->join('submissions', 'exercise_question.question_id', 'submissions.question_id')
             ->join('question', 'exercise_question.question_id', 'question.id')
             ->where('exercise_question.exercise_id', $request->exercise_id)
-            ->where('submissions.student_id', Auth::user()->id)->get()->count();
+            ->where('submissions.status', 'Passed') //tambah nilai fix sesuai kolom dosen
+            ->where('submissions.student_id',  Auth::user()->id)->get()->count();
 
-        $question = DB::table('exercise_question')->where('exercise_id', 1)->get()->count();
+
+        // $question = DB::table('exercise_question')->where('exercise_id', 1)->get()->count();
+        $question = DB::table('exercise_question')->where('exercise_id', '=', $request->exercise_id)->get()->count();
         $result = floor(($passed / $question) * 100);
         return view('user.student.result.resultByExercise', compact('exercise_id', 'passed', 'question', 'result'));
     }

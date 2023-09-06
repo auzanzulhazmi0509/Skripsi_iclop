@@ -18,7 +18,7 @@
                 <div class="col-lg-4 col-12">
                     <div class="row">
                         <div class="col-12">
-                            <div class="small-box bg-lightblue">
+                            <div class="small-box bg-blue">
                                 <div class="inner">
                                     @forelse ($tahun_ajaran as $item)
                                         <h3>{{ $item->{'name'} }}</h3>
@@ -27,10 +27,10 @@
                                         <h3>No Data</h3>
                                     @endforelse
                                 </div>
-                                <div class="icon">
+                                {{-- <div class="icon">
                                     <i class="ion ion-calendar"></i>
-                                </div>
-                                <p class="small-box-footer">Tahun Ajaran Aktif</p>
+                                </div> --}}
+                                <p class="small-box-footer">Tahun Ajaran</p>
                             </div>
                         </div>
                     </div>

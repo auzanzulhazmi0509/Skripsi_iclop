@@ -1,13 +1,13 @@
 @extends('user.teacher.master')
 
-@section('title', 'iCLOP | Bank Soal')
+@section('title', 'iCLOP | Daftar Soal')
 
 @section('content-header')
     <div class="content-header">
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <p>Bank Soal</p>
+                    <p>Daftar Soal</p>
                 </div>
                 <div class="col-sm-6">
                     <button class="float-sm-right btn btn-primary" data-toggle="modal" data-target="#addModal">Tambah
@@ -140,6 +140,7 @@
                                     <div class="form-row">
                                         <div class="form-group col">
                                             <label for="test_code">Test Code</label>
+                                            {{-- <label for="test_result">Test Code</label> --}}
                                             <span class="fas fa-question" data-toggle="tooltip_requiredTable"
                                                 data-placement="right"
                                                 title="Contoh tersedia pada button di bawah."></span>
@@ -168,6 +169,7 @@
                                             </div>
                                             <div class="input-group mt-2">
                                                 <textarea rows="5" type="text" class="form-control" name="test_code" placeholder="Test code"></textarea>
+                                                {{-- <textarea rows="5" type="text" class="form-control" name="test_result" placeholder="Test code"></textarea> --}}
                                                 <div class="input-group-append">
                                                     <div class="input-group-text">
                                                         <span class="fas fa-code"></span>
@@ -290,6 +292,8 @@
                     .description);
                 $(questionModal).find('form').find('textarea[name="test_code"]').val(data.details
                     .test_code);
+                // $(questionModal).find('form').find('textarea[name="test_result"]').val(data.details
+                //     .test_code);
                 $(questionModal).find('form').find('input[type="file"]').val('');
                 $(questionModal).modal('show');
             }, 'json');

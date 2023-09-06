@@ -21,7 +21,7 @@
             <div class="row">
                 @forelse ($class as $item)
                     <div class="col-lg-3 col-6">
-                        <div class="small-box bg-lightblue">
+                        <div class="small-box bg-blue">
                             <div class="inner">
                                 <h3>{{ $item->name }}</h3>
                                 <p>Kelas</p>

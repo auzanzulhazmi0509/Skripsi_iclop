@@ -47,7 +47,7 @@
                         <div class="col-lg-4 col-12">
                             <div class="row">
                                 <div class="col-12">
-                                    <div class="small-box bg-gray">
+                                    <div class="small-box bg-white">
                                         <div class="inner">
                                             <h3>Latihan</h3>
                                             <p>Daftar Latihan</p>
@@ -55,14 +55,14 @@
                                         <div class="icon">
                                             <i class="ion ion-stats-bars"></i>
                                         </div>
-                                        <a href="{{ route('student.exercise') }}" class="small-box-footer">More info <i
+                                        <a href="{{ route('student.exercise') }}" class="small-box-footer bg-blue">More info <i
                                                 class="fas fa-arrow-circle-right"></i></a>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12">
-                                    <div class="small-box bg-gray">
+                                    <div class="small-box bg-white">
                                         <div class="inner">
                                             <h3>Nilai</h3>
                                             <p>Daftar Nilai</p>
@@ -70,7 +70,7 @@
                                         <div class="icon">
                                             <i class="ion ion-stats-bars"></i>
                                         </div>
-                                        <a href="{{ route('student.result') }}" class="small-box-footer">More info <i
+                                        <a href="{{ route('student.result') }}" class="small-box-footer bg-blue">More info <i
                                                 class="fas fa-arrow-circle-right"></i></a>
                                     </div>
                                 </div>

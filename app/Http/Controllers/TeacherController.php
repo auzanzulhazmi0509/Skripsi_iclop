@@ -94,7 +94,10 @@ class TeacherController extends Controller
     public function class()
     {
         $year = AcademicYear::where('status', 'Aktif')->get();
-        $class = Classes::where('teacher_id', 1)->paginate(2);
+        $teacher = Teacher::all();
+        // $class = Classes::where('teacher_id', 1)->paginate(2);
+        $class = Classes::with('teacher', 'year')->paginate(4);
+        // $class = Classes::where('teacher_id', 1)->paginate(3);
         return view('user.teacher.class.index', compact('class', 'year'));
     }
 

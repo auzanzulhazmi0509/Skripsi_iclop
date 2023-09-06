@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="{{ asset('toastr/toastr.min.css') }}">
 </head>
 
-<body class="hold-transition layout-top-nav dark-mode">
+<body class="hold-transition layout-top-nav night-mode">
     <div class="wrapper">
         <nav class="main-header navbar navbar-expand-md navbar-dark">
             <div class="container">
@@ -47,19 +47,19 @@
                             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false" class="nav-link dropdown-toggle">Pembelajaran</a>
                             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                                <li><a href="{{ route('student.exercise') }}" class="dropdown-item">Latihan</a></li>
+                                <li><a href="{{ route('student.exercise') }}" class="dropdown-item">Soal</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
                             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false" class="nav-link dropdown-toggle">Nilai</a>
                             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                                <li><a href="{{ route('student.result') }}" class="dropdown-item">Latihan</a></li>
+                                <li><a href="{{ route('student.result') }}" class="dropdown-item">Nilai</a></li>
                             </ul>
                         </li>
                     </ul>
 
-                    <form class="form-inline ml-0 ml-md-3">
+                    {{-- <form class="form-inline ml-0 ml-md-3">
                         <div class="input-group input-group-sm">
                             <input class="form-control form-control-navbar" type="search" placeholder="Search"
                                 aria-label="Search">
@@ -69,7 +69,7 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </form> --}}
                 </div>
 
                 <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
@@ -104,9 +104,9 @@
 
         <footer class="main-footer">
             <div class="float-right d-none d-sm-inline">
-                Welcome
+                Welcome Polinema
             </div>
-            <strong>Copyright &copy; 2022 <a href="#">iCLOP</a>.</strong> All rights
+            <strong>Copyright &copy; 2023 <a href="#">iCLOP</a>.</strong> All rights
             reserved.
         </footer>
     </div>

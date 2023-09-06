@@ -21,10 +21,13 @@
     <div class="register-box">
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <a href="#" class="h1"><b>iCLOP</b></a>
+                <a href="#" class="h1">
+                    <img src="{{ asset('dist/img/logo1.png') }}" width="35%"
+                    alt="User Image">
+                    {{-- <b>iCLOP</b></a> --}}
             </div>
             <div class="card-body">
-                <p class="login-box-msg">Register a new membership</p>
+                <p class="login-box-msg"><font size="5">Register</p>
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
                     @if ( Session::get('success'))
@@ -42,7 +45,7 @@
                             </div>
                         </div>
                         @error('name')
-                        <span class="invalid-feedback" role="alert">
+                        <span class="invalid-feedback" role="alert" style="font-size: 16px;">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
@@ -57,7 +60,7 @@
                         </div>
 
                         @error('email')
-                        <span class="invalid-feedback" role="alert">
+                        <span class="invalid-feedback" role="alert" style="font-size: 16px;">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
@@ -72,7 +75,7 @@
                             </div>
                         </div>
                         @error('password')
-                        <span class="invalid-feedback" role="alert">
+                        <span class="invalid-feedback" role="alert" style="font-size: 16px;">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
@@ -94,7 +97,7 @@
 
                     </div>
                 </form>
-                <a href="{{route('login')}}" class="text-center">I already have a membership</a>
+                <a href="{{route('login')}}" class="text-center" style="font-size: 16px;">I already have a membership</a>
             </div>
         </div>
     </div>

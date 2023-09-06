@@ -65,7 +65,7 @@
                                     </div>
                                     <span class="text-danger error-text dbname_error"></span>
                                 </div>
-                                <div class="form-group col-sm-6">
+                                {{-- <div class="form-group col-sm-6">
                                     <label for="score">Skor</label>
                                     <div class="input-group">
                                         <input type="number" class="form-control" name="score"
@@ -77,7 +77,7 @@
                                         </div>
                                     </div>
                                     <span class="text-danger error-text score_error"></span>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-sm-12">
@@ -99,7 +99,7 @@
                                     <label for="required_table">Required Table</label>
                                     <span class="fas fa-question" data-toggle="tooltip_requiredTable"
                                         data-placement="right"
-                                        title="TIDAK WAJIB DIISI. Digunakan untuk membuat tabel yang dibutuhkan untuk pemebelajaran."></span>
+                                        title="TIDAK WAJIB DIISI. Digunakan untuk membuat tabel yang dibutuhkan untuk pembelajaran."></span>
                                     <div class="input-group">
                                         <textarea rows="5" type="text" class="form-control" name="required_table"
                                             placeholder="Required table"></textarea>
@@ -115,6 +115,7 @@
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label for="test_code">Test Code</label>
+                                    {{-- <label for="test_result">Test Code</label> --}}
                                     <span class="fas fa-question" data-toggle="tooltip_requiredTable"
                                         data-placement="right" title="Contoh tersedia pada button dibawah."></span>
                                     <div>
@@ -140,6 +141,7 @@
                                     </div>
                                     <div class="input-group">
                                         <textarea rows="5" type="text" class="form-control" name="test_code"
+                                        {{-- <textarea rows="5" type="text" class="form-control" name="test_result" --}}
                                             placeholder="Test code soal"></textarea>
                                         <div class="input-group-append">
                                             <div class="input-group-text">

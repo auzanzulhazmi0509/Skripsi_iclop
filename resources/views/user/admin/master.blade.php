@@ -66,7 +66,7 @@
             <div class="sidebar">
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
+                        <img src="{{ asset('dist/img/admin.jpg') }}" class="img-circle elevation-2"
                             alt="User Image">
                     </div>
                     <div class="info">
@@ -91,7 +91,7 @@
                         data-accordion="false">
                         <li class="nav-item">
                             <a href="{{ route('admin.dashboard') }}" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <i class="fa-solid fa-gauge"></i>
                                 <p>
                                     Dashboard
                                 </p>
@@ -108,13 +108,16 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{ route('admin.academic_year') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        {{-- <i class="far fa-circle nav-icon"></i> --}}
+                                        <i class="fa-solid fa-check"></i>
+                                        {{-- <i class="fa-regular fa-circle" style="color: #fafafa;"></i> --}}
                                         <p>Tahun Ajaran</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('admin.class') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        {{-- <i class="far fa-circle nav-icon"></i> --}}
+                                        <i class="fa-solid fa-check"></i>
                                         <p>Kelas</p>
                                     </a>
                                 </li>
@@ -122,7 +125,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.teacher')}}" class="nav-link">
-                                <i class="fa-solid fa-person-chalkboard"></i>
+                                <i class="fa-solid fa-chalkboard-user"></i>
                                 <p>
                                     Dosen
 
@@ -151,7 +154,7 @@
             <strong>Copyright &copy; 2023 <a href="#">iCLOP</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 1.2.0
+                <b>Version</b> 1.3.0
             </div>
         </footer>
     </div>

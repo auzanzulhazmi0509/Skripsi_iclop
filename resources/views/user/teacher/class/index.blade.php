@@ -96,7 +96,7 @@
                             <thead>
                                 <th>Nama</th>
                                 <th>Kelas</th>
-                                <th>Aksi</th>
+                                {{-- <th>Aksi</th> --}}
                             </thead>
                             <tbody></tbody>
                         </table>
@@ -122,10 +122,10 @@
                     data: "class_name",
                     name: "class_name",
                 },
-                {
-                    data: "actions",
-                    name: "actions",
-                },
+                // {
+                //     data: "actions",
+                //     name: "actions",
+                // },
             ],
         });
 

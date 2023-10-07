@@ -72,6 +72,7 @@ class ExerciseQuestionController extends Controller
             ->join('exercise', 'exercise_question.exercise_id', 'exercise.id')
             ->join('question', 'exercise_question.question_id', 'question.id')
             ->where('exercise_question.exercise_id', $exercise_id)
+            ->where('exercise_question.isRemoved', '=', 0)
             ->select('question.title', 'question.topic', 'question.title', 'question.description', 'exercise_question.exercise_id', 'exercise_question.no')
             ->get();
 

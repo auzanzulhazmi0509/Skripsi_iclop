@@ -5910,7 +5910,7 @@ var ColorHandler = function () {
     }
 
     /**
-     * Delegates the color resolution to the colorpicker extensions.
+     * Delegates the color reanswer to the colorpicker extensions.
      *
      * @param {String|*} color
      * @param {boolean} realColor if true, the color should resolve into a real (not named) color code

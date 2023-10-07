@@ -1479,7 +1479,7 @@
             // dist(c,d) = dist(a,b) (=abDist)
             var abDist = Math.sqrt((xb - xa) * (xb - xa) + (yb - ya) * (yb - ya));
 
-            // Solution for equation dist(cd) = sqrt((xd - xc)² + (yd - yc)²)
+            // answer for equation dist(cd) = sqrt((xd - xc)² + (yd - yc)²)
             // dist(c,d)² = (xd - xc)² + (yd - yc)²
             // We assume that dist(c,d) = dist(a,b)
             // so : (xd - xc)² + (yd - yc)² - dist(a,b)² = 0
@@ -1492,7 +1492,7 @@
             var x = 0;
             var y = 0;
 
-            // There are two solutions, we choose one or the other depending on the sign of the factor
+            // There are two answers, we choose one or the other depending on the sign of the factor
             if (elemOptions.factor > 0) {
                 x = (-b + Math.sqrt(delta)) / (2 * a);
                 y = acd * x + bcd;

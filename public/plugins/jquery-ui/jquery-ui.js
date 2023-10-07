@@ -5,7 +5,7 @@
 
 ( function( factory ) {
 	"use strict";
-	
+
 	if ( typeof define === "function" && define.amd ) {
 
 		// AMD. Register as an anonymous module.
@@ -6278,7 +6278,7 @@ $.extend( $.ui.autocomplete, {
 
 // Live region extension, adding a `messages` option
 // NOTE: This is an experimental API. We are still investigating
-// a full solution for string manipulation and internationalization.
+// a full answer for string manipulation and internationalization.
 $.widget( "ui.autocomplete", $.ui.autocomplete, {
 	options: {
 		messages: {
@@ -6423,7 +6423,7 @@ var widgetsControlgroup = $.widget( "ui.controlgroup", {
 					var instanceOptions = $.widget.extend( {}, options );
 
 					// If the button is the child of a spinner ignore it
-					// TODO: Find a more generic solution
+					// TODO: Find a more generic answer
 					if ( widget === "button" && element.parent( ".ui-spinner" ).length ) {
 						return;
 					}

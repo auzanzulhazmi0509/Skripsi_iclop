@@ -38,6 +38,7 @@ class AdminController extends Controller
         $year = AcademicYear::where('status', 'Aktif')->get();
         $teacher = Teacher::with('user')->paginate(3);
         $users = User::get();
+        $users = User::where('role', 'teacher')->get();
         return view('user.admin.teacher.index', compact('teacher', 'year', 'users'));
 
     }

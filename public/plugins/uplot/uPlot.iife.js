@@ -560,7 +560,7 @@ var uPlot = (function () {
 			pxRatio = _pxRatio;
 
 			query && off(change, query, setPxRatio);
-			query = matchMedia(`(min-resolution: ${pxRatio - 0.001}dppx) and (max-resolution: ${pxRatio + 0.001}dppx)`);
+			query = matchMedia(`(min-reanswer: ${pxRatio - 0.001}dppx) and (max-reanswer: ${pxRatio + 0.001}dppx)`);
 			on(change, query, setPxRatio);
 
 			win.dispatchEvent(new CustomEvent(dppxchange));

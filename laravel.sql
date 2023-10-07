@@ -193,8 +193,8 @@ CREATE TABLE `question` (
   `topic` varchar(255) DEFAULT NULL,
   `dbname` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
-  `required_table` text DEFAULT NULL,
-  `test_code` text DEFAULT NULL,
+  `hint` text DEFAULT NULL,
+  `answer` text DEFAULT NULL,
   `guide` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -204,7 +204,7 @@ CREATE TABLE `question` (
 -- Dumping data for table `question`
 --
 
-INSERT INTO `question` (`id`, `title`, `topic`, `dbname`, `description`, `required_table`, `test_code`, `guide`, `created_at`, `updated_at`) VALUES
+INSERT INTO `question` (`id`, `title`, `topic`, `dbname`, `description`, `hint`, `answer`, `guide`, `created_at`, `updated_at`) VALUES
 (9, 'select table', 'Topic WHERE', 'dbname', 'Buatlah query untuk menampilkan sebuah tabel bernama \"kategori\"', 'CREATE EXTENSION IF NOT EXISTS pgtap;\r\nCREATE OR REPLACE FUNCTION public.testschema()\r\nRETURNS SETOF TEXT LANGUAGE plpgsql AS $$\r\nBEGIN\r\nRETURN NEXT has_table( \'kategori\', \'TABEL kategori\');\r\nEND;\r\n$$;\r\nSELECT * FROM runtests(\'public\'::name);', 'CREATE EXTENSION IF NOT EXISTS pgtap;\r\nCREATE OR REPLACE FUNCTION public.testschema()\r\nRETURNS SETOF TEXT LANGUAGE plpgsql AS $$\r\nBEGIN\r\nRETURN NEXT has_table( \'kategori\', \'TABEL kategori\');\r\nEND;\r\n$$;\r\nSELECT * FROM runtests(\'public\'::name);', 'SKLA.pdf', NULL, '2023-08-04 01:58:50'),
 (14, 'SELECT Table1', 'SELECT Table', 'dbname', 'buat', 'CREATE EXTENSION IF NOT EXISTS pgtap;\r\nCREATE OR REPLACE FUNCTION public.testschema()\r\nRETURNS SETOF TEXT LANGUAGE plpgsql AS $$\r\nBEGIN\r\nRETURN NEXT has_table( \'kategori\', \'TABEL kategori\');\r\nRETURN NEXT has_table( \'mobil\', \'TABEL mobil\');\r\nEND;\r\n$$;\r\nSELECT * FROM runtests(\'public\'::name);', 'CREATE EXTENSION IF NOT EXISTS pgtap;\r\nCREATE OR REPLACE FUNCTION public.testschema()\r\nRETURNS SETOF TEXT LANGUAGE plpgsql AS $$\r\nBEGIN\r\nRETURN NEXT has_table( \'kategori\', \'TABEL kategori\');\r\nRETURN NEXT has_table( \'mobil\', \'TABEL mobil\');\r\nEND;\r\n$$;\r\nSELECT * FROM runtests(\'public\'::name);', 'iclop2.pdf', NULL, NULL),
 (15, 'Select Table Tes', 'SELECT Table', 'iclop', 'buatlah', 'CREATE EXTENSION IF NOT EXISTS pgtap;\r\nCREATE OR REPLACE FUNCTION public.testschema()\r\nRETURNS SETOF TEXT LANGUAGE plpgsql AS $$\r\nBEGIN\r\nRETURN NEXT results_eq(\r\n    \'SELECT * from customers\',\r\n    \'SELECT * from customers\',\r\n    \'tabel customers\'\r\nEND;\r\n$$;\r\nSELECT * FROM runtests(\'public\'::name);', 'CREATE EXTENSION IF NOT EXISTS pgtap;\r\nCREATE OR REPLACE FUNCTION public.testschema()\r\nRETURNS SETOF TEXT LANGUAGE plpgsql AS $$\r\nBEGIN\r\nRETURN NEXT results_eq(\r\n    \'SELECT * from customers\',\r\n    \'SELECT * from customers\',\r\n    \'tabel customers\'\r\nEND;\r\n$$;\r\nSELECT * FROM runtests(\'public\'::name);', 'SKLA.pdf', NULL, '2023-08-24 22:16:08');
@@ -241,7 +241,7 @@ CREATE TABLE `submissions` (
   `student_id` bigint(20) UNSIGNED DEFAULT NULL,
   `question_id` bigint(20) UNSIGNED DEFAULT NULL,
   `status` varchar(10) DEFAULT NULL,
-  `solution` varchar(250) NOT NULL,
+  `answer` varchar(250) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

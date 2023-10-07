@@ -122,6 +122,12 @@
                                         <p>Kelas</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('teacher.exerciseResult') }}" class="nav-link">
+                                        <i class="fa-solid fa-check"></i>
+                                        <p>Nilai</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         {{-- <li class="nav-item">

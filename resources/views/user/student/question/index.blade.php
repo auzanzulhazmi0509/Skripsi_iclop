@@ -18,14 +18,18 @@
     <div class="content">
         <div class="container">
             <div class="row">
+                <div class="col-md-6">
                 @forelse ($soal as $item)
+                </div>
+                {{ $item->{'no'} }}
+                <p>.</p>
+                {{ $item->{'description'} }}
                 <div class="col-md-6">
                     <embed src="{{Storage::disk('local')->url('/dql_soal/'. $item->guide)}}" type="application/pdf" style="width: 100%; height: 500px;">
                 </div>
                     {{-- <div class="col-md-6">
                         <embed src="{{ Storage::disk('local')->url('/dql_soal/' . $item->guide) }}" type="application/pdf" style="width: 100%; height: 500px;">
                     </div> --}}
-
                     <div class="col-md-6">
                         <div class="editor" id="editor" style="height: 200px;"></div>
                         <div class="row mt-3">
@@ -87,6 +91,64 @@
     @endsection
 
     @section('script')
+    <script>
+        editor = ace.edit("editor");
+        editor.setTheme("ace/theme/monokai");
+        editor.session.setMode("ace/mode/pgsql");
+    </script>
+
+    <script>
+        $('#runButton').click(function(){
+            if (editor.getSession().getValue() == "") {
+                alert("Silakan tulis jawaban anda terlebih dahulu!");
+            } else {
+                $.ajax({
+                    url: "{{ route('student.runtest') }}",
+                    method: "POST",
+                    data: {
+                        code: editor.getSession().getValue(),
+                        question_id: "{{ $soal[0]->{'id'} }}",
+                    },
+                    success: function(response) {
+                        // alert(editor.getSession().getValue());
+                        $("#output").html(response.result);
+                    },
+                    error: function() {
+                        $(".output").html("Something went wrong!");
+                    }
+                });
+            }
+        })
+        $('#submitButton').click(function(){
+            if (editor.getSession().getValue() == "") {
+                alert("Silakan tulis jawaban anda terlebih dahulu!");
+            } else {
+                $.ajax({
+                    url: "{{ route('student.submittest') }}",
+                    method: "POST",
+                    data: {
+                        code: editor.getSession().getValue(),
+                        question_id: "{{ $soal[0]->{'id'} }}",
+                        user_id: "{{ Auth::user()->id }}",
+                    },
+                    success: function(response) {
+                        $("#output").html(response.result);
+                        if (response.status == 'passed') {
+                                toastr.success(response.message);
+                            } else {
+                                toastr.warning(response.message);
+                            }
+                    },
+                    error: function() {
+                        $(".output").html("Something went wrong!");
+                    }
+                });
+            }
+        })
+    </script>
+    @endsection
+
+    {{-- @section('script')
         <script>
             $(document).ready(function() {
                 $('#runButton').click(function() {
@@ -166,4 +228,4 @@
 
             });
         </script>
-    @endsection
+    @endsection --}}

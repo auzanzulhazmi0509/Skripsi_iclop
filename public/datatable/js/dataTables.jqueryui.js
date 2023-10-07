@@ -145,7 +145,7 @@ DataTable.ext.renderer.header.jqueryui = function ( settings, cell, column, clas
 
 /*
  * TableTools jQuery UI compatibility
- * Required TableTools 2.1+
+ * HintTools 2.1+
  */
 if ( DataTable.TableTools ) {
 	$.extend( true, DataTable.TableTools.classes, {

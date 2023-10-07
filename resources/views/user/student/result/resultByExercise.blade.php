@@ -91,11 +91,11 @@
             $.get(url, {
                 submission_id: submission_id
             }, function(data) {
-                const modal = $('.solutionModal');
+                const modal = $('.answerModal');
                 // $(modal).find('h5').text(data.details[0].title);
                 // $(modal).find('h6').text(data.details[0].updated_at);
                 $(modal).find('h4').text(data.details[0].soal['title']);
-                $(modal).find('code').text(data.details[0].solution);
+                $(modal).find('code').text(data.details[0].answer);
                 $(modal).modal('show');
             }, "json");
         });

@@ -13,8 +13,11 @@ class Question extends Model
         'topic',
         'dbname',
         'description',
-        'required_table',
-        'test_code',
+        'answer',
+        'hint',
+        'description',
+        'hint',
+        'answer',
         // 'test_result',
         'guide'
     ];

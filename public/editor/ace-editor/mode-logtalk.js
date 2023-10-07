@@ -6,26 +6,26 @@ var TextHighlightRules = require("./text_highlight_rules").TextHighlightRules;
 
 var LogtalkHighlightRules = function() {
 
-    this.$rules = { start: 
+    this.$rules = { start:
        [ { token: 'punctuation.definition.comment.logtalk',
            regex: '/\\*',
-           push: 
+           push:
             [ { token: 'punctuation.definition.comment.logtalk',
                 regex: '\\*/',
                 next: 'pop' },
               { defaultToken: 'comment.block.logtalk' } ] },
          { todo: 'fix grouping',
-           token: 
+           token:
             [ 'comment.line.percentage.logtalk',
               'punctuation.definition.comment.logtalk' ],
            regex: '%.*$\\n?' },
          { todo: 'fix grouping',
-           token: 
+           token:
             [ 'storage.type.opening.logtalk',
               'punctuation.definition.storage.type.logtalk' ],
            regex: ':-\\s(?:object|protocol|category|module)(?=[(])' },
          { todo: 'fix grouping',
-           token: 
+           token:
             [ 'storage.type.closing.logtalk',
               'punctuation.definition.storage.type.logtalk' ],
            regex: ':-\\send_(?:object|protocol|category)(?=[.])' },
@@ -34,19 +34,19 @@ var LogtalkHighlightRules = function() {
            regex: '\\b(?:complements|extends|i(?:nstantiates|mp(?:orts|lements))|specializes)(?=[(])' },
          { caseInsensitive: false,
            todo: 'fix grouping',
-           token: 
+           token:
             [ 'storage.modifier.others.logtalk',
               'punctuation.definition.storage.modifier.logtalk' ],
            regex: ':-\\s(?:e(?:lse|ndif)|built_in|dynamic|synchronized|threaded)(?=[.])' },
          { caseInsensitive: false,
            todo: 'fix grouping',
-           token: 
+           token:
             [ 'storage.modifier.others.logtalk',
               'punctuation.definition.storage.modifier.logtalk' ],
            regex: ':-\\s(?:c(?:alls|oinductive)|e(?:lif|n(?:coding|sure_loaded)|xport)|i(?:f|n(?:clude|itialization|fo))|reexport|set_(?:logtalk|prolog)_flag|uses)(?=[(])' },
          { caseInsensitive: false,
            todo: 'fix grouping',
-           token: 
+           token:
             [ 'storage.modifier.others.logtalk',
               'punctuation.definition.storage.modifier.logtalk' ],
            regex: ':-\\s(?:alias|info|d(?:ynamic|iscontiguous)|m(?:eta_(?:non_terminal|predicate)|ode|ultifile)|p(?:ublic|r(?:otected|ivate))|op|use(?:s|_module)|synchronized)(?=[(])' },
@@ -128,7 +128,7 @@ var LogtalkHighlightRules = function() {
            regex: '\\b(?:context|parameter|se(?:lf|nder)|this)(?=[(])' },
          { token: 'support.function.database.logtalk',
            regex: '\\b(?:a(?:bolish|ssert(?:a|z))|clause|retract(all)?)(?=[(])' },
-         { token: 'support.function.all-solutions.logtalk',
+         { token: 'support.function.all-answers.logtalk',
            regex: '\\b((?:bag|set)of|f(?:ind|or)all)(?=[(])' },
          { caseInsensitive: false,
            token: 'support.function.multi-threading.logtalk',
@@ -147,7 +147,7 @@ var LogtalkHighlightRules = function() {
            regex: '\\b(?:expand_(?:goal|term)|(?:goal|term)_expansion|phrase)(?=[(])' },
          { token: 'punctuation.definition.string.begin.logtalk',
            regex: '\'',
-           push: 
+           push:
             [ { token: 'constant.character.escape.logtalk',
                 regex: '\\\\([\\\\abfnrtv"\']|(x[a-fA-F0-9]+|[0-7]+)\\\\)' },
               { token: 'punctuation.definition.string.end.logtalk',
@@ -156,7 +156,7 @@ var LogtalkHighlightRules = function() {
               { defaultToken: 'string.quoted.single.logtalk' } ] },
          { token: 'punctuation.definition.string.begin.logtalk',
            regex: '"',
-           push: 
+           push:
             [ { token: 'constant.character.escape.logtalk', regex: '\\\\.' },
               { token: 'punctuation.definition.string.end.logtalk',
                 regex: '"',
@@ -170,7 +170,7 @@ var LogtalkHighlightRules = function() {
            regex: '\\b(\\d+\\.?\\d*((e|E)(\\+|-)?\\d+)?)\\b' },
          { token: 'variable.other.logtalk',
            regex: '\\b([A-Z_][A-Za-z0-9_]*)\\b' } ] };
-    
+
     this.normalizeRules();
 };
 
@@ -199,7 +199,7 @@ var FoldMode = exports.FoldMode = function(commentRegex) {
 oop.inherits(FoldMode, BaseFoldMode);
 
 (function() {
-    
+
     this.foldingStartMarker = /([\{\[\(])[^\}\]\)]*$|^\s*(\/\*)/;
     this.foldingStopMarker = /^[^\[\{\(]*([\}\]\)])|^[\s\*]*(\*\/)/;
     this.singleLineBlockCommentRe= /^\s*(\/\*).*\*\/\s*$/;
@@ -208,42 +208,42 @@ oop.inherits(FoldMode, BaseFoldMode);
     this._getFoldWidgetBase = this.getFoldWidget;
     this.getFoldWidget = function(session, foldStyle, row) {
         var line = session.getLine(row);
-    
+
         if (this.singleLineBlockCommentRe.test(line)) {
             if (!this.startRegionRe.test(line) && !this.tripleStarBlockCommentRe.test(line))
                 return "";
         }
-    
+
         var fw = this._getFoldWidgetBase(session, foldStyle, row);
-    
+
         if (!fw && this.startRegionRe.test(line))
             return "start"; // lineCommentRegionStart
-    
+
         return fw;
     };
 
     this.getFoldWidgetRange = function(session, foldStyle, row, forceMultiline) {
         var line = session.getLine(row);
-        
+
         if (this.startRegionRe.test(line))
             return this.getCommentRegionBlock(session, line, row);
-        
+
         var match = line.match(this.foldingStartMarker);
         if (match) {
             var i = match.index;
 
             if (match[1])
                 return this.openingBracketBlock(session, match[1], row, i);
-                
+
             var range = session.getCommentFoldRange(row, i + match[0].length, 1);
-            
+
             if (range && !range.isMultiLine()) {
                 if (forceMultiline) {
                     range = this.getSectionRange(session, row);
                 } else if (foldStyle != "all")
                     range = null;
             }
-            
+
             return range;
         }
 
@@ -260,7 +260,7 @@ oop.inherits(FoldMode, BaseFoldMode);
             return session.getCommentFoldRange(row, i, -1);
         }
     };
-    
+
     this.getSectionRange = function(session, row) {
         var line = session.getLine(row);
         var startIndent = line.search(/\S/);
@@ -277,7 +277,7 @@ oop.inherits(FoldMode, BaseFoldMode);
             if  (startIndent > indent)
                 break;
             var subRange = this.getFoldWidgetRange(session, "all", row);
-            
+
             if (subRange) {
                 if (subRange.start.row <= startRow) {
                     break;
@@ -289,14 +289,14 @@ oop.inherits(FoldMode, BaseFoldMode);
             }
             endRow = row;
         }
-        
+
         return new Range(startRow, startColumn, endRow, session.getLine(endRow).length);
     };
     this.getCommentRegionBlock = function(session, line, row) {
         var startColumn = line.search(/\s*$/);
         var maxRow = session.getLength();
         var startRow = row;
-        
+
         var re = /^\s*(?:\/\*|\/\/|--)#?(end)?region\b/;
         var depth = 1;
         while (++row < maxRow) {
@@ -349,4 +349,3 @@ exports.Mode = Mode;
                         }
                     });
                 })();
-            

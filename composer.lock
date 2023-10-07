@@ -6647,7 +6647,7 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Solution contracts for Ignition",
+            "description": "answer contracts for Ignition",
             "homepage": "https://github.com/facade/ignition-contracts",
             "keywords": [
                 "contracts",
@@ -6904,7 +6904,7 @@
                 },
                 {
                     "name": "Dave Marshall",
-                    "email": "dave.marshall@atstsolutions.co.uk",
+                    "email": "dave.marshall@atstanswers.co.uk",
                     "homepage": "http://davedevelopment.co.uk"
                 }
             ],

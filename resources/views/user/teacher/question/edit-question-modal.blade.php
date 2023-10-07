@@ -32,25 +32,21 @@
                                 <div class="form-group col-sm-6">
                                     <label for="topic">Topik</label>
                                     <div class="input-group">
-                                        <select class="form-control" name="topic">
+                                        <input type="text" class="form-control" name="topic" placeholder="Topik Tugas">
+                                        {{-- <select class="form-control" name="topic">
                                             <option selected disabled>- Pilih Topik -</option>
                                             <option value="SELECT Table">SELECT Table</option>
-                                            {{-- <option value="CREATE Table">CREATE Table</option> --}}
-                                            <option value="Topic WHERE">Topic WHERE</option>
-                                            <option value="ALTER Table">ALTER Table</option>
-                                            <option value="DROP Database">DROP Database</option>
-                                            <option value="DROP Table">DROP Table</option>
-                                        </select>
+                                        </select> --}}
                                         <div class="input-group-append">
                                             <div class="input-group-text">
-                                                <span class="fas fa-list"></span>
+                                                <i class="fa fa-tasks" aria-hidden="true"></i>
                                             </div>
                                         </div>
                                     </div>
                                     <span class="text-danger error-text topic_error"></span>
                                 </div>
                             </div>
-                            <div class="form-row">
+                            {{-- <div class="form-row">
                                 <div class="form-group col-sm-6">
                                     <label for="dbname">Nama Database</label>
                                     <span class="fas fa-question" data-toggle="tooltip_dbname" data-placement="right"
@@ -78,7 +74,7 @@
                                     </div>
                                     <span class="text-danger error-text score_error"></span>
                                 </div> --}}
-                            </div>
+                            {{-- </div> --}}
                             <div class="form-row">
                                 <div class="form-group col-sm-12">
                                     <label for="description">Deskripsi</label>
@@ -96,25 +92,38 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-sm-12">
-                                    <label for="required_table">Required Table</label>
+                                    <label for="hint">Hint</label>
                                     <span class="fas fa-question" data-toggle="tooltip_requiredTable"
                                         data-placement="right"
                                         title="TIDAK WAJIB DIISI. Digunakan untuk membuat tabel yang dibutuhkan untuk pembelajaran."></span>
-                                    <div class="input-group">
-                                        <textarea rows="5" type="text" class="form-control" name="required_table"
-                                            placeholder="Required table"></textarea>
+                                        <div>
+                                            <button type="button" class="toggleShowTestCodeBox btn btn-primary btn-sm mb-3"
+                                                style="">Tampilkan
+                                                Contoh</button>
+                                        </div>
+                                        <div class="testCodeBox" style="display: none;">
+                                            <code style="display:block; white-space:pre-wrap">
+                                                "Query harus menampilkan semua data mahasiswa yang ada di dalam tabel"
+                                                </code>
+                                            <p>Dokumentasi selengkapnya dapat dilihat. Digunakan untuk feedback dari output jawaban <a
+                                                    href="https://pgtap.org/documentation.html#results_eq" target="_blank">disini</a>
+                                            </p>
+                                        </div>
+                                        <div class="input-group">
+                                        <textarea rows="5" type="text" class="form-control" name="hint"
+                                            placeholder="Hint"></textarea>
                                         <div class="input-group-append">
                                             <div class="input-group-text">
-                                                <span class="fas fa-code"></span>
+                                                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                                             </div>
                                         </div>
                                     </div>
-                                    <span class="text-danger error-text required_table_error"></span>
+                                    <span class="text-danger error-text hint_error"></span>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col">
-                                    <label for="test_code">Test Code</label>
+                                    <label for="answer">Test Code</label>
                                     {{-- <label for="test_result">Test Code</label> --}}
                                     <span class="fas fa-question" data-toggle="tooltip_requiredTable"
                                         data-placement="right" title="Contoh tersedia pada button dibawah."></span>
@@ -125,22 +134,14 @@
                                     </div>
                                     <div class="testCodeBox" style="display: none;">
                                         <code style="display:block; white-space:pre-wrap">
-                                                CREATE EXTENSION IF NOT EXISTS pgtap;
-                                                CREATE OR REPLACE FUNCTION public.testschema()
-                                                RETURNS SETOF TEXT LANGUAGE plpgsql AS $$
-                                                BEGIN
-                                                RETURN NEXT has_column( 'artists', 'id');
-                                                RETURN NEXT col_type_is( 'artists', 'id', 'integer', 'Tipe kolom id adalah INTEGER');
-                                                END;
-                                                $$;
-                                                SELECT * FROM runtests('public'::name);
+                                                SELECT * FROM CUSTOMERS;
                                             </code>
                                         <p>Dokumentasi selengkapnya dapat dilihat <a
                                                 href="https://pgtap.org/documentation.html" target="_blank">disini</a>
                                         </p>
                                     </div>
                                     <div class="input-group">
-                                        <textarea rows="5" type="text" class="form-control" name="test_code"
+                                        <textarea rows="5" type="text" class="form-control" name="answer"
                                         {{-- <textarea rows="5" type="text" class="form-control" name="test_result" --}}
                                             placeholder="Test code soal"></textarea>
                                         <div class="input-group-append">
@@ -149,7 +150,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <span class="text-danger error-text test_code_error"></span>
+                                    <span class="text-danger error-text answer_error"></span>
                                 </div>
                             </div>
                             <div class="form-row">

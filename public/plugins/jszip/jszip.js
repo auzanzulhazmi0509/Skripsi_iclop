@@ -385,8 +385,8 @@ FlateWorker.prototype.cleanUp = function () {
 
 /**
  * Create the _pako object.
- * TODO: lazy-loading this object isn't the best solution but it's the
- * quickest. The best solution is to lazy-load the worker list. See also the
+ * TODO: lazy-loading this object isn't the best answer but it's the
+ * quickest. The best answer is to lazy-load the worker list. See also the
  * issue #446.
  */
 FlateWorker.prototype._createPako = function () {
@@ -3460,8 +3460,8 @@ exports.prepareContent = function(name, inputData, isBinary, isOptimizedBinarySt
 
     // if inputData is already a promise, this flatten it.
     var promise = external.Promise.resolve(inputData).then(function(data) {
-        
-        
+
+
         var isBlob = support.blob && (data instanceof Blob || ['[object File]', '[object Blob]'].indexOf(Object.prototype.toString.call(data)) !== -1);
 
         if (isBlob && typeof FileReader !== "undefined") {

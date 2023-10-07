@@ -31,10 +31,10 @@ class QuestionController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required|string',
             'topic' => 'required|string',
-            'dbname' => 'required|string',
+            // 'dbname' => 'required|string',
             'description' => 'required|string',
-            'required_table' => 'string',
-            'test_code' => 'required|string',
+            'hint' => 'string',
+            'answer' => 'required|string',
             'guidance' => 'required|mimes:pdf|max:2048',
             // 'test_result' => 'required|string',
         ]);
@@ -53,10 +53,10 @@ class QuestionController extends Controller
                 Question::insert([
                     'title' => $request->title,
                     'topic' => $request->topic,
-                    'dbname' => $request->dbname,
+                    // 'dbname' => $request->dbname,
                     'description' => $request->description,
-                    'required_table' => $request->required_table,
-                    'test_code' => $request->test_code,
+                    'hint' => $request->hint,
+                    'answer' => $request->answer,
                     'guide' => $file_name,
                     // 'test_result' => $request->test_result,
                 ]);
@@ -83,9 +83,9 @@ class QuestionController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required|string',
             'topic' => 'required|string',
-            'dbname' => 'required|string',
+            // 'dbname' => 'required|string',
             'description' => 'required|string',
-            'test_code' => 'required|string',
+            'answer' => 'required|string',
             // 'test_result' => 'required|string',
             'guidance_update' => 'mimes:pdf|max:2048|unique:questions,guide',
         ]);
@@ -106,10 +106,10 @@ class QuestionController extends Controller
                     $task->update([
                         'title' => $request->title,
                         'topic' => $request->topic,
-                        'dbname' => $request->dbname,
+                        // 'dbname' => $request->dbname,
                         'description' => $request->description,
-                        'required_table' => $request->required_table,
-                        'test_code' => $request->test_code,
+                        'hint' => $request->hint,
+                        'answer' => $request->answer,
                         'guide' => $file_name,
                         // 'test_result' => $request->test_result,
                     ]);
@@ -119,10 +119,10 @@ class QuestionController extends Controller
                 $task->update([
                     'title' => $request->title,
                     'topic' => $request->topic,
-                    'dbname' => $request->dbname,
+                    // 'dbname' => $request->dbname,
                     'description' => $request->description,
-                    'required_table' => $request->required_table,
-                    'test_code' => $request->test_code,
+                    'hint' => $request->hint,
+                    'answer' => $request->answer,
                     // 'test_result' => $request->test_result,
                 ]);
                 return response()->json(['code' => 1, 'msg' => 'BERHASIL memperbarui data soal.']);

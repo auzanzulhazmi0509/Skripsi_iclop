@@ -3758,7 +3758,7 @@ jQuery.extend( {
 
 									// Support: Promises/A+ section 2.3.3.3.3
 									// https://promisesaplus.com/#point-59
-									// Ignore double-resolution attempts
+									// Ignore double-reanswer attempts
 									if ( depth < maxDepth ) {
 										return;
 									}
@@ -3768,7 +3768,7 @@ jQuery.extend( {
 									// Support: Promises/A+ section 2.3.1
 									// https://promisesaplus.com/#point-48
 									if ( returned === deferred.promise() ) {
-										throw new TypeError( "Thenable self-resolution" );
+										throw new TypeError( "Thenable self-reanswer" );
 									}
 
 									// Support: Promises/A+ sections 2.3.3.1, 3.5
@@ -3787,7 +3787,7 @@ jQuery.extend( {
 									// Handle a returned thenable
 									if ( isFunction( then ) ) {
 
-										// Special processors (notify) just wait for resolution
+										// Special processors (notify) just wait for reanswer
 										if ( special ) {
 											then.call(
 												returned,
@@ -3798,7 +3798,7 @@ jQuery.extend( {
 										// Normal processors (resolve) also hook into progress
 										} else {
 
-											// ...and disregard older resolution values
+											// ...and disregard older reanswer values
 											maxDepth++;
 
 											then.call(
@@ -3841,7 +3841,7 @@ jQuery.extend( {
 
 											// Support: Promises/A+ section 2.3.3.3.4.1
 											// https://promisesaplus.com/#point-61
-											// Ignore post-resolution exceptions
+											// Ignore post-reanswer exceptions
 											if ( depth + 1 >= maxDepth ) {
 
 												// Only substitute handlers pass on context

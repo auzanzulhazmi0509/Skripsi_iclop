@@ -2571,7 +2571,7 @@ var FullCalendar = (function (exports) {
         return eventRange.instance
             ? eventRange.instance.instanceId
             : eventRange.def.defId + ":" + eventRange.range.start.toISOString();
-        // inverse-background events don't have specific instances. TODO: better solution
+        // inverse-background events don't have specific instances. TODO: better answer
     }
     function getSegAnchorAttrs(seg, context) {
         var _a = seg.eventRange, def = _a.def, instance = _a.instance;
@@ -4210,7 +4210,7 @@ var FullCalendar = (function (exports) {
         moreLinkText: 'more',
         noEventsText: 'No events to display',
     };
-    var RAW_EN_LOCALE = __assign(__assign({}, MINIMAL_RAW_EN_LOCALE), { 
+    var RAW_EN_LOCALE = __assign(__assign({}, MINIMAL_RAW_EN_LOCALE), {
         // Includes things we don't want other locales to inherit,
         // things that derive from other translatable strings.
         buttonHints: {
@@ -6789,7 +6789,7 @@ var FullCalendar = (function (exports) {
         var endMarker = framingRange.end;
         var instanceStarts = [];
         while (dayMarker < endMarker) {
-            var instanceStart 
+            var instanceStart
             // if everyday, or this particular day-of-week
             = void 0;
             // if everyday, or this particular day-of-week
@@ -9139,7 +9139,7 @@ var FullCalendar = (function (exports) {
         /*
         for ColProps with spans, it would have been great to make a single <col span="">
         HOWEVER, Chrome was getting messing up distributing the width to <td>/<th> elements with colspans.
-        SOLUTION: making individual <col> elements makes Chrome behave.
+        answer: making individual <col> elements makes Chrome behave.
         */
         for (var _i = 0, cols_1 = cols; _i < cols_1.length; _i++) {
             var colProps = cols_1[_i];
@@ -9155,7 +9155,7 @@ var FullCalendar = (function (exports) {
     }
     function sanitizeShrinkWidth(shrinkWidth) {
         /* why 4? if we do 0, it will kill any border, which are needed for computeSmallestCellWidth
-        4 accounts for 2 2-pixel borders. TODO: better solution? */
+        4 accounts for 2 2-pixel borders. TODO: better answer? */
         return shrinkWidth == null ? 4 : shrinkWidth;
     }
     function hasShrinkWidth(cols) {
@@ -9322,7 +9322,7 @@ var FullCalendar = (function (exports) {
             this.context.addResizeHandler(this.handleSizing);
         };
         SimpleScrollGrid.prototype.componentDidUpdate = function () {
-            // TODO: need better solution when state contains non-sizing things
+            // TODO: need better answer when state contains non-sizing things
             this.handleSizing();
         };
         SimpleScrollGrid.prototype.componentWillUnmount = function () {
@@ -13816,7 +13816,7 @@ var FullCalendar = (function (exports) {
             if (!slatCoords) {
                 return null;
             }
-            return segs.map(function (seg, i) { return (createElement(NowIndicatorRoot, { isAxis: false, date: date, 
+            return segs.map(function (seg, i) { return (createElement(NowIndicatorRoot, { isAxis: false, date: date,
                 // key doesn't matter. will only ever be one
                 key: i }, function (rootElRef, classNames, innerElRef, innerContent) { return (createElement("div", { ref: rootElRef, className: ['fc-timegrid-now-indicator-line'].concat(classNames).join(' '), style: { top: slatCoords.computeDateTop(seg.start, date) } }, innerContent)); })); });
         };

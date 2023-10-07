@@ -7,7 +7,7 @@ use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\ExerciseQuestionController;
 use App\Http\Controllers\ExerciseResultController;
 use App\Http\Controllers\QuestionController;
-use App\Http\Controllers\ValidatorXController;
+use App\Http\Controllers\ValidatorController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentController;
@@ -110,10 +110,10 @@ Route::group(['prefix' => 't', 'midddleware' => ['auth', 'isTeacher']], function
 });
 
 Route::group(['prefix' => 's', 'midddleware' => ['auth', 'isStudent']], function () {
+    Route::post('execute-code', [ValidatorController::class, 'execute_code'])->name('student.runtest');
+    Route::post('submit', [ValidatorController::class, 'submit'])->name('student.submittest');
+
     Route::get('dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard');
-    Route::post('runtest', [ValidatorXController::class, 'runtest'])->name('student.runtest');
-    // Route::post('runtest', [ValidatorController::class, 'displaytestresult'])->name('student.displaytestresult');
-    Route::post('submittest', [ValidatorXController::class, 'submittest'])->name('student.submittest');
     Route::get('exercise', [StudentController::class, 'exercise'])->name('student.exercise');
 
     Route::get('exercise-question/{exercise_id}', [StudentController::class, 'exerciseQuestion'])->name('student.exerciseQuestion');
@@ -123,5 +123,5 @@ Route::group(['prefix' => 's', 'midddleware' => ['auth', 'isStudent']], function
     Route::get('result', [StudentController::class, 'result'])->name('student.result');
     Route::get('result/exercise/{exercise_id}', [StudentController::class, 'resultByExercise'])->name('student.result.byExercise');
     Route::get('result/exercise/list/{exercise_id}', [StudentController::class, 'getResultByExerciseDataTable'])->name('student.result.getByExerciseDataTable');
-    Route::get('result/exercise/detail/solution', [StudentController::class, 'getSubmissionResultDetail'])->name('student.result.getSubmissionDetail');
+    Route::get('result/exercise/detail/answer', [StudentController::class, 'getSubmissionResultDetail'])->name('student.result.getSubmissionDetail');
 });

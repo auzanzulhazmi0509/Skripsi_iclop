@@ -1532,7 +1532,7 @@ function getAlpha(string) {
 // generators
 function hexString(rgba, a) {
    var a = (a !== undefined && rgba.length === 3) ? a : rgba[3];
-   return "#" + hexDouble(rgba[0]) 
+   return "#" + hexDouble(rgba[0])
               + hexDouble(rgba[1])
               + hexDouble(rgba[2])
               + (
@@ -3117,7 +3117,7 @@ var helpers_options = {
 	 * is called with `context` as first argument and the result becomes the new input.
 	 * @param {number} [index] - If defined and the current value is an array, the value
 	 * at `index` become the new input.
-	 * @param {object} [info] - object to return information about resolution in
+	 * @param {object} [info] - object to return information about reanswer in
 	 * @param {boolean} [info.cacheable] - Will be set to `false` if option is not cacheable.
 	 * @since 2.7.0
 	 */
@@ -5325,7 +5325,7 @@ var controller_bubble = core_datasetController.extend({
 			values = helpers$1.extend({}, values);
 		}
 
-		// Custom radius resolution
+		// Custom radius reanswer
 		values.radius = resolve$1([
 			custom.radius,
 			data.r,
@@ -13496,7 +13496,7 @@ function fitWithPointLabels(scale) {
 	//
 	// Reaction: https://dl.dropboxusercontent.com/u/34601363/toomuchscience.gif
 	//
-	// Solution:
+	// answer:
 	//
 	// We assume the radius of the polygon is half the size of the canvas at first
 	// at each index we check if the text overlaps.

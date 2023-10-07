@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class ValidatorXController extends Controller
 {
     private $topic, $dbname;
-    private $test_code, $isAllowSubmit = true;
+    private $answer, $isAllowSubmit = true;
 
     protected function displayHint($myhint)
     {
@@ -57,9 +57,9 @@ class ValidatorXController extends Controller
         }
     }
 
-    public function executeTest($connection, $test_code)
+    public function executeTest($connection, $answer)
     {
-        $result = pg_query($connection, $test_code);
+        $result = pg_query($connection, $answer);
         if (!$result) {
             throw new \Exception($this->displayError(pg_last_error($connection)));
         } else {
@@ -101,12 +101,12 @@ class ValidatorXController extends Controller
 
         //Get task data
         $test = Question::where('id', '=', $request->question_id)->get();
-        $this->test_code = $test[0]->test_code;
+        $this->answer = $test[0]->answer;
         $this->topic = $test[0]->topic;
         $this->dbname = $test[0]->dbname . Auth::user()->id;
 
-        if (strcmp($test[0]->topic, "CREATE Database") == 0) {
-            if (strcasecmp($request->code, "create database my_playlist;") == 0) {
+        if (strcmp($test[0]->topic, "SELECT Table") == 0) {
+            if (strcasecmp($request->code, "select * from customers;") == 0) {
                 $finalResult = "<div id='output-text' class='w-100'>";
                 $finalResult .= "<div class='alert alert-success'>";
                 $finalResult .= "<i class='fas fa-check'> </i> " . "Membuat database my_playlist";
@@ -158,7 +158,7 @@ class ValidatorXController extends Controller
 
             //Execute Code
             $mycode = "BEGIN;";
-            $mycode = $test[0]->required_table;
+            $mycode = $test[0]->hint;
             $mycode .= $request->code;
             try {
                 $this->executeCode($mhs_connection, $mycode, $this->topic);
@@ -168,7 +168,7 @@ class ValidatorXController extends Controller
 
             //Execute Test
             try {
-                $finalResult = $this->displayTestResult($this->executeTest($mhs_connection, $this->test_code));
+                $finalResult = $this->displayTestResult($this->executeTest($mhs_connection, $this->answer));
             } catch (\Exception $e) {
                 return response()->json(['result' => $this->displayError($e->getMessage())]);
             }
@@ -191,7 +191,7 @@ class ValidatorXController extends Controller
     {
         //Get task data
         $test = Question::where('id', '=', $request->task_id)->get();
-        $this->test_code = $test[0]->test_code;
+        $this->answer = $test[0]->answer;
         $this->topic = $test[0]->topic;
         $this->dbname = $test[0]->dbname . Auth::user()->id;
 
@@ -218,7 +218,7 @@ class ValidatorXController extends Controller
 
                 $result = Submission::updateOrCreate(
                     ['student_id' => $request->user_id, 'question_id' => $request->task_id],
-                    ['status' => 'Passed', 'solution' => $request->code]
+                    ['status' => 'Passed', 'answer' => $request->code]
                 );
 
                 if (!$result) {
@@ -238,7 +238,7 @@ class ValidatorXController extends Controller
 
                 $result = Submission::updateOrCreate(
                     ['student_id' => $request->user_id, 'question_id' => $request->task_id],
-                    ['status' => 'Failed', 'solution' => $request->code]
+                    ['status' => 'Failed', 'answer' => $request->code]
                 );
 
                 if (!$result) {
@@ -276,7 +276,7 @@ class ValidatorXController extends Controller
 
                 $result = Submission::updateOrCreate(
                     ['student_id' => $request->user_id, 'question_id' => $request->task_id],
-                    ['status' => 'Passed', 'solution' => $request->code]
+                    ['status' => 'Passed', 'answer' => $request->code]
                 );
 
                 if (!$result) {
@@ -296,7 +296,7 @@ class ValidatorXController extends Controller
 
                 $result = Submission::updateOrCreate(
                     ['student_id' => $request->user_id, 'question_id' => $request->task_id],
-                    ['status' => 'Failed', 'solution' => $request->code]
+                    ['status' => 'Failed', 'answer' => $request->code]
                 );
 
                 if (!$result) {
@@ -335,7 +335,7 @@ class ValidatorXController extends Controller
 
             //Execute Code
             $mycode = "BEGIN;";
-            $mycode = $test[0]->required_table;
+            $mycode = $test[0]->hint;
             $mycode .= $request->code;
             try {
                 $this->executeCode($mhs_connection, $mycode, $this->topic);
@@ -345,8 +345,8 @@ class ValidatorXController extends Controller
 
             //Execute Test
             try {
-                //$this->executeTest($mhs_connection, $this->test_code);
-                $finalResult = $this->displayTestResult($this->executeTest($mhs_connection, $this->test_code));
+                //$this->executeTest($mhs_connection, $this->answer);
+                $finalResult = $this->displayTestResult($this->executeTest($mhs_connection, $this->answer));
             } catch (\Exception $e) {
                 return response()->json(['result' => $this->displayError($e->getMessage())]);
             }
@@ -364,7 +364,7 @@ class ValidatorXController extends Controller
 
                 $result = Submission::updateOrCreate(
                     ['student_id' => $request->user_id, 'question_id' => $request->task_id],
-                    ['status' => 'Passed', 'solution' => $request->code]
+                    ['status' => 'Passed', 'answer' => $request->code]
                 );
 
                 if (!$result) {
@@ -385,7 +385,7 @@ class ValidatorXController extends Controller
             } else {
                 $result = Submission::updateOrCreate(
                     ['student_id' => $request->user_id, 'question_id' => $request->task_id],
-                    ['status' => 'Failed', 'solution' => $request->code]
+                    ['status' => 'Failed', 'answer' => $request->code]
                 );
 
                 if (!$result) {

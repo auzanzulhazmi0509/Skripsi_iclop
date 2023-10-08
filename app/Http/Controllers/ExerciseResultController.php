@@ -48,6 +48,7 @@ class ExerciseResultController extends Controller
                     ->where('exercise_question.exercise_id', $request->exercise_id)
                     ->where('submissions.student_id', $row->id)
                     ->where('submissions.status', 'Passed')
+                    ->where('exercise_question.isRemoved', '=', 0)
                     ->select('submissions.id')
                     ->count();
                 return $passed;
@@ -56,6 +57,7 @@ class ExerciseResultController extends Controller
             ->addColumn('jumlah_soal', function ($row, Request $request) {
                 $jumlah_soal = DB::table('exercise_question')
                     ->where('exercise_question.exercise_id', $request->exercise_id)
+                    ->where('exercise_question.isRemoved', '=', 0)
                     ->select('exercise_question.id')
                     ->count();
                 return $jumlah_soal;
@@ -65,11 +67,13 @@ class ExerciseResultController extends Controller
                     ->join('submissions', 'exercise_question.question_id', 'submissions.question_id')
                     ->where('exercise_question.exercise_id', $request->exercise_id)
                     ->where('submissions.student_id', $row->id)
+                    ->where('exercise_question.isRemoved', '=', 0)
                     ->where('submissions.status', 'Passed')
                     ->select('submissions.id')
                     ->count();
                 $jumlah_soal = DB::table('exercise_question')
                     ->where('exercise_question.exercise_id', $request->exercise_id)
+                    ->where('exercise_question.isRemoved', '=', 0)
                     ->select('exercise_question.id')
                     ->count();
                 return floor(($passed / $jumlah_soal) * 100);

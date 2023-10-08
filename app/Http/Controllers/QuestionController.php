@@ -30,7 +30,7 @@ class QuestionController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required|string',
-            'topic' => 'required|string',
+            'topic' => 'string',
             // 'dbname' => 'required|string',
             'description' => 'required|string',
             'hint' => 'string',
@@ -82,12 +82,12 @@ class QuestionController extends Controller
 
         $validator = Validator::make($request->all(), [
             'title' => 'required|string',
-            'topic' => 'required|string',
+            'topic' => 'string',
             // 'dbname' => 'required|string',
             'description' => 'required|string',
             'answer' => 'required|string',
             // 'test_result' => 'required|string',
-            'guidance_update' => 'mimes:pdf|max:2048|unique:questions,guide',
+            'guidance_update' => 'mimes:pdf|max:2048|unique:question,guide',
         ]);
 
         if ($validator->fails()) {

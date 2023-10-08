@@ -93,6 +93,7 @@ class ExerciseQuestionController extends Controller
             ->join('question', 'exercise_question.question_id', 'question.id')
             ->where('exercise_question.exercise_id', '=', $request->exercise_id)
             ->where('exercise_question.no', '=', $request->question_no)
+            ->where('exercise_question.isRemoved', '=', 0)
             ->select('exercise_question.no', 'question.id', 'question.title', 'question.topic', 'question.dbname', 'question.description', 'question.hint', 'question.answer', 'question.guide', 'exercise_question.exercise_id')
             ->get();
         $jumlah_soal = ExerciseQuestion::where('exercise_id', '=', $request->exercise_id)->get()->count();

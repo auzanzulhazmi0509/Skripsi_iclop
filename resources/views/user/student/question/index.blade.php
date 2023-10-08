@@ -5,9 +5,9 @@
     <div class="content-header">
         <div class="container">
             <div class="row">
-                <div class="col">
-                    <p>Soal Latihan</p>
-                </div>
+                <header>
+                    <h1>Soal Latihan</h1>
+                </header>
             </div>
         </div>
     </div>
@@ -20,11 +20,10 @@
             <div class="row">
                 <div class="col-md-6">
                 @forelse ($soal as $item)
-                </div>
-                {{ $item->{'no'} }}
-                <p>.</p>
-                {{ $item->{'description'} }}
-                <div class="col-md-6">
+                {{-- </div> --}}
+                {{ $item->{'no'} . "."}}
+                {{ $item->{'description'} . "."}}
+                {{-- <div class="col-md-6"> --}}
                     <embed src="{{Storage::disk('local')->url('/dql_soal/'. $item->guide)}}" type="application/pdf" style="width: 100%; height: 500px;">
                 </div>
                     {{-- <div class="col-md-6">

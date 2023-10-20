@@ -66,6 +66,8 @@ Route::group(['prefix' => 'a', 'midddleware' => ['auth', 'isAdmin']], function (
     Route::post('student/assign-student', [ClassesStudentController::class, 'assignStudentToClass'])->name('admin.student.assignStudentToClass');
     Route::post('student/remove-student', [ClassesStudentController::class, 'removeStudentFromClass'])->name('admin.student.removeStudentFromClass');
 
+
+
 });
 
 Route::group(['prefix' => 't', 'midddleware' => ['auth', 'isTeacher']], function () {
@@ -107,6 +109,10 @@ Route::group(['prefix' => 't', 'midddleware' => ['auth', 'isTeacher']], function
     Route::get('exercise-result/class/{class_id}', [ExerciseResultController::class, 'exerciseResultByClass'])->name('teacher.exerciseResultByClass');
     Route::get('exercise-result/exercise/{exercise_id}/class/{class_id)', [ExerciseResultController::class, 'exerciseResultByExerciseDataTable'])->name('teacher.exerciseResultByExerciseDataTable');
     Route::post('exercise-result/get/exercise-id', [ExerciseResultController::class, 'getExerciseIDForDataTable'])->name('teacher.exerciseResult.getExerciseIDForDataTable');
+    Route::get('exercise-result/user/{exercise_id}', [ExerciseResultController::class, 'exerciseResultByExerciseDataTable'])->name('teacher.result.byExercise');
+
+    Route::get('studentclass/get/{class_id}', [ClassesStudentController::class, 'getClassStudentDataTable'])->name('teacher.student.getDatatable');
+
 });
 
 Route::group(['prefix' => 's', 'midddleware' => ['auth', 'isStudent']], function () {
@@ -124,4 +130,6 @@ Route::group(['prefix' => 's', 'midddleware' => ['auth', 'isStudent']], function
     Route::get('result/exercise/{exercise_id}', [StudentController::class, 'resultByExercise'])->name('student.result.byExercise');
     Route::get('result/exercise/list/{exercise_id}', [StudentController::class, 'getResultByExerciseDataTable'])->name('student.result.getByExerciseDataTable');
     Route::get('result/exercise/detail/answer', [StudentController::class, 'getSubmissionResultDetail'])->name('student.result.getSubmissionDetail');
+
+
 });

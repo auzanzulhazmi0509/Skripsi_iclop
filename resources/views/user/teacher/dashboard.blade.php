@@ -65,8 +65,8 @@
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-blue">
                         <div class="inner">
-                            <h3>Latihan</h3>
-                            <p>Daftar Latihan</p>
+                            <h3>Latihan & Ujian</h3>
+                            <p>Soal Latihan dan Ujian</p>
                         </div>
                         <div class="icon">
 

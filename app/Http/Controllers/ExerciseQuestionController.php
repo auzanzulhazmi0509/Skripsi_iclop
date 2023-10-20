@@ -80,7 +80,7 @@ class ExerciseQuestionController extends Controller
             ->addColumn('actions', function ($row) {
                 $route = "question/" . $row->exercise_id . "/" . $row->no;
                 return '<div class="btn-group" role="group">
-            <a href="' . $route . '" class="btn btn-primary btn-block"><i class="fa fa-pen"></i></a>
+            <a href="' . $route . '" class="btn btn-primary btn-block"> Kerjakan <i class="fa fa-pen"></i></a>
             </div>';
             })
             ->rawColumns(['actions'])

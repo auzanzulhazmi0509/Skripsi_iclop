@@ -32,7 +32,7 @@ class ValidatorController extends Controller
         $query .= "BEGIN \r\n";
         $query .= "RETURN NEXT \r\n";
         $query .= "results_eq( \r\n";
-        $query .=  "'" . $code . "', \r\n";
+        $query .= "'" . $code . "', \r\n";
         $query .= "'" . $this->answer . "', \r\n";
         $query .= "'" . $this->hint . "' \r\n";
         $query .= "); \r\n";
@@ -66,18 +66,33 @@ class ValidatorController extends Controller
         while ($row = pg_fetch_assoc($testResult)) {
             if (strpos($row['runtests'], 'not ok') !== false) {
                 $this->isAllowSubmit = false;
-                $result .= "<div class='alert alert-danger'>";
-                $result .= "<i class='fas fa-times'></i> " . $row['runtests'];
+                $result .= "<div class='alert alert-warning'>";
+                $result .= "<i class='fas fa-exclamation-triangle''></i> " . "Jawaban yang anda masukkan kurang tepat. Harap Periksa Kembali Jawaban Anda";
+                $result .= "<p> </p>";
+                $result .= "<i class='fas fa-exclamation-triangle'></i> " . $row['runtests'];
                 $result .= "</div>";
             } else if (strpos($row['runtests'], 'failed') !== false) {
                 $this->isAllowSubmit = false;
-                $result .= "<div class='alert alert-warning'>";
+                $result .= "<div class='alert alert-danger'>";
+                $result .= "<i class='fas fa-exclamation-triangle'></i> " . "Jawaban yang anda masukkan SALAH, Harap Periksa Laggit init" ;
+                $result .= "<p> </p>";
                 $result .= "<i class='fas fa-exclamation-triangle'></i> " . $row['runtests'];
                 $result .= "</div>";
             } else if (strpos($row['runtests'], 'Test died') !== false) {
                 $this->isAllowSubmit = false;
-                $result .= "<div class='alert alert-warning'>";
-                $result .= "<i class='fas fa-exclamation-triangle'></i> " . $row['runtests'];
+                $result .= "<div class='alert alert-danger'>";
+                // $result .= "<i class='fas fa-exclamation-triangle'></i> " . $row['runtests'];
+                $result .= "<i class='fas fa-times'></i> " . "Jawaban yang anda masukkan SALAH, Harap Periksa Lagi" ;
+                $result .= "<p> </p>";
+                $result .= "<i class='fas fa-times'></i> " . $row['runtests'];
+                $result .= "</div>";
+            } else if (strpos($row['runtests'], 'ERROR') !== false) {
+                $this->isAllowSubmit = false;
+                $result .= "<div class='alert alert-danger'>";
+                // $result .= "<i class='fas fa-exclamation-triangle'></i> " . $row['runtests'];
+                $result .= "<i class='fas fa-times'></i> " . "Jawaban yang anda masukkan SALAH, Harap Periksa Lagi" ;
+                $result .= "<p> </p>";
+                $result .= "<i class='fas fa-times'></i> " . $row['runtests'];
                 $result .= "</div>";
             }
             else {

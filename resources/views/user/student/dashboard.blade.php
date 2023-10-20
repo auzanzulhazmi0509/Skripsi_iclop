@@ -29,15 +29,6 @@
                             </div>
                             <h3 class="profile-username text-center">{{ Auth::user()->name }}</h3>
                             <p class="text-muted text-center text-capitalize">{{ Auth::user()->role }}</p>
-                            {{-- <ul class="list-group list-group-unbordered mb-3">
-                                <li class="list-group-item">
-                                    <b>Exercise Completed</b> <a class="float-right">10</a>
-                                </li>
-                                <li class="list-group-item">
-                                    <b>Learning Result</b> <a class="float-right">543</a>
-                                </li>
-                            </ul> --}}
-                            <button href="#" class="btn btn-primary btn-block"><b>Update</b></button>
                         </div>
                     </div>
                 </div>
@@ -49,8 +40,8 @@
                                 <div class="col-12">
                                     <div class="small-box bg-white">
                                         <div class="inner">
-                                            <h3>Latihan</h3>
-                                            <p>Daftar Latihan</p>
+                                            <h3>Soal</h3>
+                                            <p>Soal Latihan dan Ujian</p>
                                         </div>
                                         <div class="icon">
                                             <i class="ion ion-stats-bars"></i>

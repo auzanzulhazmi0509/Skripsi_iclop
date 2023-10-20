@@ -1,12 +1,12 @@
 @extends('user.student.master') @section('title')
-    iCLOP | Soal Latihan
+    iCLOP | Soal
 @endsection
 @section('content-header')
     <div class="content-header">
         <div class="container">
             <div class="row">
                 <header>
-                    <h1>Soal Latihan</h1>
+                    <h1>Soal</h1>
                 </header>
             </div>
         </div>
@@ -64,8 +64,8 @@
                                     data-placement="bottom" title="Run"><i class="fa fa-play"></i></button>
                             </div>
                             <div class="col-3">
-                                <button id="submitButton" class="btn btn-outline-warning w-100" data-toggle="tooltip"
-                                    data-placement="bottom" title="Submit"><i class="fa fa-check-double"></i></button>
+                                <button id="submitButton" class="btn btn-warning w-100" data-toggle="tooltip"
+                                    data-placement="bottom" title="Submit"><i class="fa-solid fa-check-to-slot"></i></button>
                             </div>
                         </div>
                         <div id="output" class="row mt-3"></div>

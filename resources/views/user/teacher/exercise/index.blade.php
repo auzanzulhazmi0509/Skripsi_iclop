@@ -1,12 +1,12 @@
 @extends('user.teacher.master') @section('title')
-    iCLOP | Latihan
+    iCLOP | Latihan & Ujian
 @endsection
 @section('content-header')
     <div class="content-header">
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <p>Daftar Latihan</p>
+                    <p>Latihan & Ujian</p>
                 </div>
             </div>
         </div>

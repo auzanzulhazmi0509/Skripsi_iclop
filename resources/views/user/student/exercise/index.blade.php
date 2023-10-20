@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <p>Latihan</p>
+                    <p>Soal</p>
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <p>Daftar Soal</p>
+                    <p>Bank Soal</p>
                 </div>
                 <div class="col-sm-6">
                     <button class="float-sm-right btn btn-primary" data-toggle="modal" data-target="#addModal">Tambah
@@ -29,7 +29,7 @@
                                 <th>No</th>
                                 <th>Soal</th>
                                 <th>Topik</th>
-                                <th>Deskrpsi</th>
+                                <th>Deskripsi</th>
                                 <th>Aksi</th>
                             </thead>
                             <tbody>

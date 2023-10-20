@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <p>Kelas</p>
+                    <p>Kelass</p>
                 </div>
             </div>
         </div>
@@ -132,7 +132,7 @@
 
         $(document).on("click", "#classDetailBtn", function() {
             const class_id = $(this).data("id");
-            const url = "{{ route('admin.student.getDatatable', ['class_id' => -1]) }}"
+            const url = "{{ route('teacher.student.getDatatable', ['class_id' => -1]) }}"
                 .replace("-1", class_id);
             $("#class_student_table").DataTable().ajax.url(url).load();
         });

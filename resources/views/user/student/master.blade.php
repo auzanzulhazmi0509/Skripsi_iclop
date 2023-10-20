@@ -27,10 +27,10 @@
 
 <body class="hold-transition layout-top-nav night-mode">
     <div class="wrapper">
-        <nav class="main-header navbar navbar-expand-md navbar-dark">
+        <nav class="main-header navbar navbar-expand-md navbar-dark" style="background-color: #4962ff;">
             <div class="container">
                 <a href="{{ route('student.dashboard') }}" class="brand-link">
-                    <img src="{{ asset('dist/img/logo1.png') }}" alt="AdminLTE Logo" width="20%">
+                    <img src="{{ asset('dist/img/logo1.png') }}" alt="AdminLTE Logo" width="18%">
                 </a>
                 <button class="navbar-toggler order-1" type="button" data-toggle="collapse"
                     data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
@@ -104,10 +104,9 @@
 
         <footer class="main-footer">
             <div class="float-right d-none d-sm-inline">
-                Welcome Polinema
+                Politeknik Negeri Malang
             </div>
-            <strong>Copyright &copy; 2023 <a href="#">iCLOP</a>.</strong> All rights
-            reserved.
+            <strong>Copyright &copy; 2023 <a href="#">iCLOP</a>.</strong>
         </footer>
     </div>
 

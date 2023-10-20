@@ -107,7 +107,7 @@
                                 <li class="nav-item">
                                     <a href="{{ route('teacher.exercise') }}" class="nav-link">
                                         <i class="fa-solid fa-check"></i>
-                                        <p>Latihan</p>
+                                        <p>Latihan & Ujian</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -171,9 +171,8 @@
         </div>
         <footer class="main-footer">
             <strong>Copyright &copy; 2023 <a href="#">iCLOP</a>.</strong>
-            All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 1.3.0
+                <b>Politeknik Negeri Malang</b>
             </div>
         </footer>
     </div>

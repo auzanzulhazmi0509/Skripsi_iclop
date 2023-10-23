@@ -12,6 +12,7 @@ class Exercise extends Model
         'academic_year_id',
         'name',
         'description',
+        'is_enabled',
     ];
 
     public function year()

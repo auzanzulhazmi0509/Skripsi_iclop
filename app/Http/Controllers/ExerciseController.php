@@ -85,4 +85,16 @@ class ExerciseController extends Controller
             return response()->json(['code' => 1, 'msg' => $request->exercise_id]);
         }
     }
+
+    public function toggleExercise(Request $request)
+    {
+        $exercise = Exercise::find($request->exercise_id);
+        if ($exercise) {
+            $exercise->is_enabled = !$exercise->is_enabled;
+            $exercise->save();
+            return response()->json(['code' => 1, 'msg' => 'Status latihan berhasil diperbarui']);
+        } else {
+            return response()->json(['code' => 0, 'msg' => 'Latihan tidak ditemukan']);
+        }
+    }
 }

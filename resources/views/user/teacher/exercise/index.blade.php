@@ -82,6 +82,10 @@
                                             data-id={{ $item->{'id'} }}><b>Detail</b></button>
                                         <a href="{{ route('teacher.exerciseQuestion', ['exercise_id' => $item->{'id'}]) }}" class="btn btn-success btn-block"
                                             id="classStudentBtn" data-id={{ $item->{'id'} }}><b>Soal</b></a>
+
+                                        <button class="btn btn-{{ $item->is_enabled ? 'danger' : 'success' }} btn-block toggle-exercise" data-id="{{ $item->id }}" data-enabled="{{ $item->is_enabled }}">
+                                                {{ $item->is_enabled ? 'Disable' : 'Enable' }}
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -190,5 +194,26 @@
                 },
             });
         });
+
+        $(document).on("click", ".toggle-exercise", function() {
+        const exerciseId = $(this).data("id");
+        const isExerciseEnabled = $(this).data("enabled");
+        $.ajax({
+            url: '{{ route('exercise.toggle') }}',
+            method: 'POST',
+            data: {
+                exercise_id: exerciseId,
+                _token: '{{ csrf_token() }}',
+            },
+            success: function(response) {
+                if (response.code === 1) {
+                    toastr.success(response.msg);
+                    $("#class_container").load(location.href + " #class_container");
+                } else {
+                    toastr.error(response.msg);
+                }
+            },
+        });
+    });
     </script>
 @endsection

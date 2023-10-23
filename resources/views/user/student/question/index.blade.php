@@ -24,7 +24,7 @@
                 {{ $item->{'no'} . "."}}
                 {{ $item->{'description'} . "."}}
                 {{-- <div class="col-md-6"> --}}
-                    <embed src="{{Storage::disk('local')->url('/dql_soal/'. $item->guide)}}" type="application/pdf" style="width: 100%; height: 500px;">
+                    <embed src="{{ asset('storage/dql_soal/' . $item->guide) }}" type="application/pdf" style="width: 100%; height: 500px;">
                 </div>
                     {{-- <div class="col-md-6">
                         <embed src="{{ Storage::disk('local')->url('/dql_soal/' . $item->guide) }}" type="application/pdf" style="width: 100%; height: 500px;">

@@ -57,7 +57,6 @@
                                 <th>Passed</th>
                                 <th>Jumlah Soal</th>
                                 <th>Nilai Latihan</th>
-                                {{-- <th>Lihat Soal</th> --}}
                             </thead>
                             <tbody></tbody>
                         </table>
@@ -102,20 +101,8 @@
                     data: "result",
                     name: "result",
                 },
-            //     {
-            //         data: null,
-            //         render: function (data, type, row) {
-            //         return '<a href="{{ route('teacher.result.byExercise', ['exercise_id' => $item->{'id'}]) }}" class="btn btn-primary">Lihat Soal</a>';
-            //     }
-            // },
             ],
         });
-
-    //     function lihatSoal(id) {
-    //     // Fungsi untuk menangani aksi saat tombol "Lihat Soal" ditekan
-    //     console.log('Lihat soal dengan ID: ' + id);
-    //     // Tambahkan logika atau aksi tambahan di sini
-    // }
 
         $("#form_get_exercise").on("submit", function(e) {
             e.preventDefault();

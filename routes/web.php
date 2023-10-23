@@ -110,6 +110,7 @@ Route::group(['prefix' => 't', 'midddleware' => ['auth', 'isTeacher']], function
     Route::get('exercise-result/exercise/{exercise_id}/class/{class_id)', [ExerciseResultController::class, 'exerciseResultByExerciseDataTable'])->name('teacher.exerciseResultByExerciseDataTable');
     Route::post('exercise-result/get/exercise-id', [ExerciseResultController::class, 'getExerciseIDForDataTable'])->name('teacher.exerciseResult.getExerciseIDForDataTable');
     Route::get('exercise-result/user/{exercise_id}', [ExerciseResultController::class, 'exerciseResultByExerciseDataTable'])->name('teacher.result.byExercise');
+    Route::get('result/exercise/list/{exercise_id}', [ExerciseController::class, 'getResultByExerciseDataTable'])->name('teacher.result.getByExerciseDataTable');
 
     Route::get('studentclass/get/{class_id}', [ClassesStudentController::class, 'getClassStudentDataTable'])->name('teacher.student.getDatatable');
 

@@ -43,6 +43,7 @@ class ExerciseResultController extends Controller
     //         ->where('submissions.student_id',  Auth::user()->id)->get()->count();
     // }
 
+    
     public function exerciseResultByExerciseDataTable(Request $request)
     {
         $class_id = $request->class_id;

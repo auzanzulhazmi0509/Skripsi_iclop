@@ -1,19 +1,19 @@
-@extends('user.teacher.master')
+@extends('user.student.master')
 @section('title')
-    iCLOP | Histori Soal
+    iCLOP | Daftar Nilai
 @endsection
 @section('content-header')
     <div class="content-header">
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <p>Histori Soal</p>
+                    <p>Daftar Nilai</p>
                     <div class="callout callout-info">
-                        {{-- <h4> Nilai: {{ $result }}</h4>
+                        <h4> Nilai: {{ $result }}</h4>
                         <p>
                             Jawaban Benar: {{ $passed }} <br>
                             Jumlah Soal:{{ $question }}
-                        </p> --}}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -45,16 +45,16 @@
             </div>
         </div>
     </div>
-    {{-- @include('user.student.result.detail-nilai-latihan-modal') --}}
+    @include('user.student.result.detail-nilai-latihan-modal')
 @endsection
 
-{{-- @section('script')
+@section('script')
     <script>
         $('#tabel_nilai').DataTable({
             processing: true,
             info: true,
             serverSide: true,
-            ajax: "{{ route('teacher.exerciseResultByExerciseDataTable', ['class_id' => $class_id, 'exercise_id' => 1]) }}",
+            ajax: "{{ route('student.result.getByExerciseDataTable', ['exercise_id' => $exercise_id]) }}",
             columns: [{
                     data: "no",
                     name: "no"
@@ -100,4 +100,4 @@
             }, "json");
         });
     </script>
-@endsection --}}
+@endsection

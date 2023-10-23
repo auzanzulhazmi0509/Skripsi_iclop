@@ -48,6 +48,7 @@ class ValidatorController extends Controller
         }
     }
 
+
     public function disconnect_from_database($connection)
     {
         pg_close($connection);

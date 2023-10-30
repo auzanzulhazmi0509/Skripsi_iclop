@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Exercise;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -43,7 +44,7 @@ class ExerciseResultController extends Controller
     //         ->where('submissions.student_id',  Auth::user()->id)->get()->count();
     // }
 
-    
+
     public function exerciseResultByExerciseDataTable(Request $request)
     {
         $class_id = $request->class_id;
@@ -114,4 +115,5 @@ class ExerciseResultController extends Controller
             ->rawColumns(['actions'])
             ->make(true);
     }
+
 }

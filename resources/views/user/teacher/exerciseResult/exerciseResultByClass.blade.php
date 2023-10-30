@@ -57,6 +57,7 @@
                                 <th>Passed</th>
                                 <th>Jumlah Soal</th>
                                 <th>Nilai Latihan</th>
+                                
                             </thead>
                             <tbody></tbody>
                         </table>
@@ -133,5 +134,7 @@
                 },
             });
         });
+
+
     </script>
 @endsection

@@ -18,6 +18,7 @@
         <div class="container">
             <div class="row">
                 @forelse ($exercise as $item)
+                @if ($item->is_enabled)
                     <div class="col-lg-4">
                         <div class="small-box bg-white">
                             <div class="inner">
@@ -31,6 +32,7 @@
                                 class="small-box-footer bg-blue"> DETAIL <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
+                    @endif
                 @empty
                     <code>No data available!</code>
                 @endforelse

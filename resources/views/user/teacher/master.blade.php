@@ -89,7 +89,7 @@
                         data-accordion="false">
                         <li class="nav-item">
                             <a href="{{ route('teacher.dashboard') }}" class="nav-link">
-                                <i class="fa-solid fa-gauge"></i>
+                                <i class="fa-solid fa-house-user"></i>
                                 <p>
                                     Dashboard
                                 </p>

@@ -29,7 +29,9 @@
                                     <select name="exercise_id" class="form-control">
                                         <option value="" disabled selected> --Pilih Latihan-- </option>
                                         @forelse ($exercise as $item)
+                                        @if ($item->is_enabled)
                                             <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                        @endif
                                         @empty
                                             <code>no data</code>
                                         @endforelse

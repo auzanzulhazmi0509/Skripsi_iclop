@@ -1,46 +1,26 @@
-@extends('user.student.master')
+@extends('user.teacher.master')
 @section('title')
-    iCLOP | Daftar Nilai
-@endsection
-@section('content-header')
-    <div class="content-header">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <p>Daftar Nilai</p>
-                    <div class="callout callout-info">
-                        <h4> Nilai: {{ $result }}</h4>
-                        <p>
-                            Jawaban Benar: {{ $passed }} <br>
-                            Jumlah Soal:{{ $question }}
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-@endsection
-
 @section('content')
     <div class="content">
-        <div class="content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <table id="tabel_nilai" class="table table-hover table-head-fixed text-nowrap" style="width: 100%">
-                            <thead>
+        <button onclick="goBack()" class="btn btn-secondary">Kembali</button>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <table id="tabel_nilai" class="table table-hover table-head-fixed text-nowrap" style="width: 100%">
+                        <thead>
+                            <tr>
                                 <th>No</th>
                                 <th>Soal</th>
                                 <th>Tanggal Submit</th>
                                 <th>Tanggal Update</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
-                            </thead>
-                            <tbody>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                            </tbody>
-                        </table>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -50,54 +30,54 @@
 
 @section('script')
     <script>
-        $('#tabel_nilai').DataTable({
-            processing: true,
-            info: true,
-            serverSide: true,
-            ajax: "{{ route('student.result.getByExerciseDataTable', ['exercise_id' => $exercise_id]) }}",
-            columns: [{
-                    data: "no",
-                    name: "no"
-                },
-                {
-                    data: "title",
-                    name: "title"
-                },
-                {
-                    data: "created_at",
-                    name: "created_at"
-                },
-                {
-                    data: "updated_at",
-                    name: "updated_at"
-                },
-                {
-                    data: "status",
-                    name: "status"
-                },
-                {
-                    data: "actions",
-                    name: "actions",
-                    searchable: false,
-                    orderable: false,
-                },
-            ]
-        });
+        function goBack() {
+            window.history.back();
+        }
+        $(document).ready(function () {
+            var table = $('#tabel_nilai').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('student.result.getResultByExerciseTable', ['student_id' => $student_id]) }}",
+                columns: [
+                    {
+                        data: 'no',
+                        name: 'no'
+                    },
+                    {
+                        data: 'title',
+                        name: 'title'
+                    },
+                    {
+                        data: 'created_at',
+                        name: 'created_at'
+                    },
+                    {
+                        data: 'updated_at',
+                        name: 'updated_at'
+                    },
+                    {
+                        data: 'status',
+                        name: 'status'
+                    },
+                    {
+                        data: 'actions',
+                        name: 'actions',
+                        orderable: false,
+                        searchable: false
+                    }
+                ]
+            });
 
-        $(document).on('click', '#jawaban', function() {
-            const submission_id = $(this).data('id');
-            const url = '{{ route('student.result.getSubmissionDetail') }}';
-            // alert();
-            $.get(url, {
-                submission_id: submission_id
-            }, function(data) {
-                const modal = $('.answerModal');
-                // $(modal).find('h5').text(data.details[0].title);
-                // $(modal).find('h6').text(data.details[0].updated_at);
-                $(modal).find('h4').text(data.details[0].soal['title']);
-                $(modal).find('code').text(data.details[0].answer);
-                $(modal).modal('show');
-            }, "json");
+            $(document).on('click', '#jawaban', function () {
+                var submission_id = $(this).data('id');
+                var url = '{{ route("teacher.result.getSubmissionDetail") }}';
+                $.get(url, { submission_id: submission_id }, function (data) {
+                    var modal = $('.answerModal');
+                    $(modal).find('h4').text(data.details[0].soal['title']);
+                    $(modal).find('code').text(data.details[0].answer);
+                    $(modal).modal('show');
+                }, "json");
+            });
         });
     </script>
 @endsection

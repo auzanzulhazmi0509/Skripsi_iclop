@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Exercise;
+use App\Models\Submission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -93,6 +94,12 @@ class ExerciseResultController extends Controller
                     ->count();
                 return floor(($passed / $jumlah_soal) * 100);
             })
+            ->addColumn('actions', function ($row) {
+                return '<div class="btn-group" role="group">
+                <button class="lihat-jawaban btn btn-primary btn-block" data-id="' . $row->id . '">Lihat Jawaban</button>
+                </div>';
+            })
+            ->rawColumns(['actions'])
             ->make(true);
 
     }
@@ -116,4 +123,36 @@ class ExerciseResultController extends Controller
             ->make(true);
     }
 
+    public function getResultByExerciseTable(Request $request)
+    {
+    $nilai = DB::table('exercise_question')
+        ->join('submissions', 'exercise_question.question_id', 'submissions.question_id')
+        ->join('question', 'exercise_question.question_id', 'question.id')
+        ->where('submissions.student_id', $request->student_id)
+        ->where('exercise_question.isRemoved', '=', 0)
+        ->where('submissions.student_id', $request->student_id)
+        ->select('submissions.id', 'exercise_question.no', 'question.title', 'submissions.status', 'submissions.created_at', 'submissions.updated_at');
+
+    return DataTables::of($nilai)
+        ->addColumn('actions', function ($row) {
+            return '<div class="btn-group" role="group">
+            <button id="jawaban" type="button" class="btn btn-primary btn-block" data-id=' . $row->id . '></i>Jawaban</button>
+            </div>';
+        })
+        ->rawColumns(['actions'])
+        ->make(true);
+    }
+
+    public function exerciseResultUser($student_id) {
+        $submissions = Submission::where('student_id', $student_id)->get();
+        return view('user.teacher.exerciseResult.exerciseResultUser', compact('submissions', 'student_id'));
+    }
+
+    public function getSubmissionResultDetailMahasiswa(Request $request)
+    {
+        $nilai = Submission::with('soal')->where('id', $request->submission_id)->get();
+        return response()
+            ->json(['details' => $nilai]);
+
+    }
 }

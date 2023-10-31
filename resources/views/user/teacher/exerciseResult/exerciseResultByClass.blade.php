@@ -57,7 +57,7 @@
                                 <th>Passed</th>
                                 <th>Jumlah Soal</th>
                                 <th>Nilai Latihan</th>
-                                
+                                <th>Actions</th>
                             </thead>
                             <tbody></tbody>
                         </table>
@@ -102,6 +102,12 @@
                     data: "result",
                     name: "result",
                 },
+                {
+                    data: "actions",
+                    name: "actions",
+                    searchable: false,
+                    orderable: false,
+                },
             ],
         });
 
@@ -135,6 +141,10 @@
             });
         });
 
+        $(document).on('click', '.lihat-jawaban', function () {
+            let student_id = $(this).data('id');
+            window.location.href = `{{ route('teacher.exerciseResultUser', ['student_id' => ':student_id']) }}`.replace(':student_id', student_id);
+        });
 
     </script>
 @endsection

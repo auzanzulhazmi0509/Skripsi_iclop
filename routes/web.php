@@ -66,6 +66,10 @@ Route::group(['prefix' => 'a', 'midddleware' => ['auth', 'isAdmin']], function (
     Route::post('student/assign-student', [ClassesStudentController::class, 'assignStudentToClass'])->name('admin.student.assignStudentToClass');
     Route::post('student/remove-student', [ClassesStudentController::class, 'removeStudentFromClass'])->name('admin.student.removeStudentFromClass');
 
+    Route::get('admin/teacher/update/{id}', [TeacherController::class, 'updateView'])->name('admin.teacher.update');
+    Route::post('admin/teacher/update/{id}', [TeacherController::class, 'updateTeacher'])->name('admin.teacher.update.post');
+    Route::get('admin/teacher/delete/{id}', [TeacherController::class, 'deleteTeacher'])->name('admin.teacher.delete');
+
 
 
 });

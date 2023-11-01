@@ -63,7 +63,7 @@
                             <thead>
                                 <th>Nama</th>
                                 <th>Tahun Ajaran</th>
-                                {{-- <th>Status</th> --}}
+                                <th>Actions</th>
 
                             </thead>
                             <tbody></tbody>
@@ -89,10 +89,12 @@
                     data: "academic_year_id",
                     name: "academic_year_id",
                 },
-                // {
-                //     data: "status",
-                //     name: "status",
-                // },
+                {
+                    data: "actions",
+                    name: "actions",
+                    searchable: false,
+                    orderable: false,
+                },
 
             ],
         });

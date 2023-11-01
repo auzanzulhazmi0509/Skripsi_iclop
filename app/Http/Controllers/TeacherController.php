@@ -28,29 +28,14 @@ class TeacherController extends Controller
                 return $row -> academic_year -> status;
             })
             ->addColumn('actions', function ($row) {
-                if ($row['status'] == 'Selesai') {
-                    return '<div class="btn-group" role="group">
-                    <button id="detailTahunBtn" type="button" class="btn btn-primary" data-id="' . $row['id'] . '"
-                    data-toggle="tooltip" data-placement="top" title="detail">
-                    <i class="fa fa-info"></i>
-                    </button>
-                    <button id="setAsActiveYearBtn" type="button" class="btn btn-success" data-id="' . $row['id'] . '"
-                    data-toggle="tooltip" data-placement="top" title="Set As Aktif">
-                    <i class="fa fa-check"></i>
-                    </button>
-                    </div>';
-                } else {
-                    return '<div class="btn-group" role="group">
-                    <button id="detailTahunBtn" type="button" class="btn btn-primary" data-id="' . $row['id'] . '"
-                    data-toggle="tooltip" data-placement="top" title="detail">
-                    <i class="fa fa-info"></i>
-                    </button>
-                    <button id="setAsNonActiveYearBtn" type="button" class="btn btn-danger" data-id="' . $row['id'] . '"
-                    data-toggle="tooltip" data-placement="top" title="Set As Non Aktif">
-                    <i class="fa fa-times"></i>
-                    </button>
-                    </div>';
-                }
+                return '<div class="btn-group" role="group">
+                            <a href="'.route('admin.teacher.update', ['id' => $row['id']]).'" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Update">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a href="'.route('admin.teacher.delete', ['id' => $row['id']]).'" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Delete">
+                            <i class="fa fa-trash"></i>
+                            </a>
+                        </div>';
 
             })
             ->rawColumns(['actions'])
@@ -144,5 +129,65 @@ class TeacherController extends Controller
             ->get();
         return view('user.teacher.exerciseResult.index', compact('class'));
     }
+
+
+    public function updateView($id)
+    {
+        $teacher = Teacher::find($id);
+        $year = AcademicYear::where('status', 'Aktif')->get();
+        $users = User::get();
+        $users = User::where('role', 'teacher')->get();
+
+        if (!$teacher) {
+            return redirect()->back()->with('error', 'Dosen tidak ditemukan');
+        }
+
+        return view('user.admin.teacher.update', compact('teacher', 'year', 'users'));
+    }
+
+
+    public function updateTeacher(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string',
+            'academic_year_id'  => 'required',
+        ]);
+
+        // Periksa apakah validasi gagal
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        // Lakukan proses pembaruan data dosen
+        $teacher = Teacher::find($id);
+        $year = AcademicYear::where('status', 'Aktif')->get();
+        $teacher->academic_year_id = $request->academic_year_id;
+        $teacher->nama = $request->name;
+        $teacher->save();
+
+        // Mengirimkan data tahun dan data user ke tampilan index
+        $year = AcademicYear::all();
+        $users = User::all();
+        return view('user.admin.teacher.index', compact('year', 'users'))->with('success', 'Data dosen berhasil diperbarui');
+    }
+
+    public function deleteTeacher(Request $request, $id)
+    {
+        $teacher = Teacher::find($id);
+
+        if (!$teacher) {
+            return redirect()->back()->with('error', 'Dosen tidak ditemukan');
+        }
+
+        $teacher->delete();
+
+        $year = AcademicYear::all(); // untuk mendapatkan data tahun
+        $users = User::all(); // untuk mendapatkan data pengguna
+
+        return view('user.admin.teacher.index', compact('year', 'users'))->with('success', 'Data dosen berhasil dihapus');
+    }
+
 
 }

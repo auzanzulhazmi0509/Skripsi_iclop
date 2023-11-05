@@ -9,7 +9,7 @@
                     <table id="tabel_nilai" class="table table-hover table-head-fixed text-nowrap" style="width: 100%">
                         <thead>
                             <tr>
-                                <th>No</th>
+                                {{-- <th>No</th> --}}
                                 <th>Soal</th>
                                 <th>Tanggal Submit</th>
                                 <th>Tanggal Update</th>
@@ -39,10 +39,10 @@
                 serverSide: true,
                 ajax: "{{ route('student.result.getResultByExerciseTable', ['student_id' => $student_id]) }}",
                 columns: [
-                    {
-                        data: 'no',
-                        name: 'no'
-                    },
+                    // {
+                    //     data: 'no',
+                    //     name: 'no'
+                    // },
                     {
                         data: 'title',
                         name: 'title'

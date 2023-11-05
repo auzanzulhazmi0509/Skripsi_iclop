@@ -86,6 +86,28 @@ class ExerciseController extends Controller
         }
     }
 
+    // public function getExerciseIDForDataTable(Request $request)
+    // {
+    //     $validator = Validator::make($request->all(), [
+    //         'exercise_id' => [
+    //             'required',
+    //             'numeric',
+    //             function ($attribute, $value, $fail) {
+    //                 $exercise = Exercise::where('id', $value)->where('is_enabled', true)->first();
+    //                 if (!$exercise) {
+    //                     $fail('Latihan yang dipilih tidak aktif atau tidak ditemukan.');
+    //                 }
+    //             },
+    //         ],
+    //     ]);
+
+    //     if ($validator->fails()) {
+    //         return response()->json(['code' => 0, 'error' => $validator->errors()->toArray()]);
+    //     } else {
+    //         return response()->json(['code' => 1, 'msg' => $request->exercise_id]);
+    //     }
+    // }
+
     public function toggleExercise(Request $request)
     {
         $exercise = Exercise::find($request->exercise_id);

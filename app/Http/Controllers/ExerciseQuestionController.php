@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Exercise;
 use App\Models\ExerciseQuestion;
 use App\Models\Question;
@@ -68,12 +69,18 @@ class ExerciseQuestionController extends Controller
     public function getExerciseQuestionList(Request $request)
     {
         $exercise_id = $request->exercise_id;
+        $student_id = Auth::user()->id;
+
         $exercise = DB::table('exercise_question')
             ->join('exercise', 'exercise_question.exercise_id', 'exercise.id')
             ->join('question', 'exercise_question.question_id', 'question.id')
+            ->leftJoin('submissions', function ($join) use ($student_id) {
+                $join->on('exercise_question.question_id', '=', 'submissions.question_id')
+                    ->where('submissions.student_id', '=', $student_id);
+            })
             ->where('exercise_question.exercise_id', $exercise_id)
             ->where('exercise_question.isRemoved', '=', 0)
-            ->select('question.title', 'question.topic', 'question.title', 'question.description', 'exercise_question.exercise_id', 'exercise_question.no')
+            ->select('question.title', 'question.topic', 'question.title', 'question.description', 'exercise_question.exercise_id', 'exercise_question.no', 'submissions.student_id', 'submissions.question_id')
             ->get();
 
         return DataTables::of($exercise)
@@ -82,6 +89,13 @@ class ExerciseQuestionController extends Controller
                 return '<div class="btn-group" role="group">
             <a href="' . $route . '" class="btn btn-primary btn-block"> Kerjakan <i class="fa fa-pen"></i></a>
             </div>';
+            })
+            ->addColumn('status', function ($row) use ($student_id) {
+                if ($row->student_id === $student_id && $row->question_id) {
+                    return 'dikerjakan';
+                } else {
+                    return 'belum dikerjakan';
+                }
             })
             ->rawColumns(['actions'])
             ->make(true);

@@ -59,25 +59,28 @@
             </div>
             <div class="row">
                 <div class="col-lg-6 col-12">
-                    <table id="exercise_question_table" class="table table-hover table-head-fixed text-nowrap">
-                        <thead>
-                            <th>No</th>
-                            <th>Soal</th>
-                            <th>Topik</th>
-                            <th>Hapus</th>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table id="exercise_question_table" class="table table-hover table-head-fixed text-nowrap">
+                            <thead>
+                                <th>No</th>
+                                <th>Soal</th>
+                                <th>Topik</th>
+                                <th>Hapus</th>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
                 </div>
 
                 <div class="col-lg-6 col-12">
-                    <table id="all_question_table" class="table table-hover table-head-fixed text-nowrap"
-                        style="width: 100%">
-                        <thead>
-                            <th>Soal</th>
-                            <th>Topik</th>
-                            <th>Tambahkan</th>
-                        </thead>
+                    <table id="all_question_table" class="table table-hover table-head-fixed text-nowrap" style="width: 100%">
+                        <div class="table-responsive">
+                            <thead>
+                                <th>Soal</th>
+                                <th>Topik</th>
+                                <th>Tambahkan</th>
+                            </thead>
+                        </div>
                         <tbody></tbody>
                     </table>
                 </div>

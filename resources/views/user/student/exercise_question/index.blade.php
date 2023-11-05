@@ -1,4 +1,5 @@
-@extends('user.student.master') @section('title')
+@extends('user.student.master')
+@section('title')
     iCLOP | Daftar Soal
 @endsection
 @section('content-header')
@@ -19,18 +20,23 @@
             {{-- <div class="container">
                 <div class="row">
                     <div class="col-md-12"> --}}
+                    <div class="table-responsive">
                         <table id="tabel_soal" class="table table-hover table-head-fixed text-nowrap" style="width: 100%">
                             <thead>
+                                <tr>
                                 <th>No</th>
                                 <th>Soal</th>
                                 <th>Topik</th>
                                 <th>Deskripsi</th>
+                                <th>Status</th>
                                 <th>Aksi</th>
+                                </tr>
                             </thead>
                             <tbody>
 
                             </tbody>
                         </table>
+                    </div>
                     {{-- </div>
                 </div>
             </div> --}}
@@ -60,6 +66,17 @@
                 {
                     data: "description",
                     name: "description"
+                },
+                {
+                    data: "status",
+                    name: "status",
+                    render: function(data, type, full, meta) {
+                        if (data === "dikerjakan") {
+                            return '<span class="badge badge-success">Selesai</span>';
+                        } else {
+                            return '<span class="badge badge-warning">Belum Dikerjakan</span>';
+                        }
+                    }
                 },
                 {
                     data: "actions",

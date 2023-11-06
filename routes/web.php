@@ -80,6 +80,8 @@ Route::group(['prefix' => 't', 'midddleware' => ['auth', 'isTeacher']], function
     Route::post('question/add', [QuestionController::class, 'addQuestion'])->name('teacher.question.add');
     Route::get('question/detail', [QuestionController::class, 'getQuestionDetail'])->name('teacher.question.detail');
     Route::post('question/update', [QuestionController::class, 'updateQuestion'])->name('teacher.question.update');
+    Route::delete('question/delete', [QuestionController::class, 'deleteQuestion'])->name('teacher.question.delete');
+
 
     Route::get('exercise', [TeacherController::class, 'exercise'])->name('teacher.exercise');
     Route::post('exercise/add', [ExerciseController::class, 'addExercise'])->name('teacher.exercise.add');

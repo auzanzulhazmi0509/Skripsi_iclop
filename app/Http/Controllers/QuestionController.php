@@ -129,4 +129,23 @@ class QuestionController extends Controller
             }
         }
     }
+
+    public function deleteQuestion(Request $request)
+    {
+        $question = Question::find($request->question_id);
+        if ($question) {
+            // Hapus semua submission yang terkait
+            Submission::where('question_id', $request->question_id)->delete();
+            // Lakukan pengecekan dan hapus keterkaitan terlebih dahulu sebelum menghapus baris
+            $exerciseQuestions = ExerciseQuestion::where('question_id', $request->question_id)->get();
+            foreach ($exerciseQuestions as $exerciseQuestion) {
+                $exerciseQuestion->delete();
+            }
+            // Hapus file gambar terkait dengan menggunakan Storage::disk('public')->delete('nama_file');
+            $question->delete();
+            return response()->json(['msg' => 'Soal berhasil dihapus.']);
+        } else {
+            return response()->json(['msg' => 'Gagal menghapus soal.'], 400);
+        }
+    }
 }

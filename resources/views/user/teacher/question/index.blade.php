@@ -32,6 +32,7 @@
                                 <th>Topik</th>
                                 <th>Deskripsi</th>
                                 <th>Aksi</th>
+                                <th>Hapus</th>
                             </thead>
                             <tbody>
 
@@ -243,6 +244,12 @@
                     data: "actions",
                     name: "actions"
                 },
+                {
+                    data: 'delete',
+                    name: 'delete',
+                    orderable: false,
+                    searchable: false
+                },
             ]
         });
 
@@ -327,6 +334,27 @@
                     }
                 }
             });
+        });
+
+        $(document).on('click', '#deleteBtn', function() {
+            const question_id = $(this).data('id');
+            const url = '{{ route('teacher.question.delete') }}';
+            if (confirm('Apakah Anda yakin ingin menghapus soal ini?')) {
+                $.ajax({
+                    url: url,
+                    type: 'DELETE',
+                    data: {
+                        question_id: question_id
+                    },
+                    success: function(response) {
+                        $('#tabel_soal').DataTable().ajax.reload(null, false);
+                        toastr.success(response.msg);
+                    },
+                    error: function(error) {
+                        toastr.error('Gagal menghapus soal. Pastikan tidak ada keterkaitan dengan soal tersebut di tempat lain.');
+                    }
+                });
+            }
         });
     </script>
 @endsection

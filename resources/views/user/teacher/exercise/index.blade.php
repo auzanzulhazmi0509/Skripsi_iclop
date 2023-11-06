@@ -80,12 +80,25 @@
                                         </p>
                                         <button class="btn btn-primary btn-block" id="exerciseDetailBtn"
                                             data-id={{ $item->{'id'} }}><b>Detail</b></button>
+
                                         <a href="{{ route('teacher.exerciseQuestion', ['exercise_id' => $item->{'id'}]) }}" class="btn btn-success btn-block"
                                             id="classStudentBtn" data-id={{ $item->{'id'} }}><b>Soal</b></a>
 
-                                        <button class="btn btn-{{ $item->is_enabled ? 'danger' : 'success' }} btn-block toggle-exercise" data-id="{{ $item->id }}" data-enabled="{{ $item->is_enabled }}">
-                                                {{ $item->is_enabled ? 'Disable' : 'Enable' }}
-                                        </button>
+                                        <div class="row mt-2">
+                                            <div class="col-md-6">
+                                                <button class="btn btn-{{ $item->is_enabled ? 'danger' : 'success' }} btn-block toggle-exercise" data-id="{{ $item->id }}" data-enabled="{{ $item->is_enabled }}">
+                                                    {{ $item->is_enabled ? 'Disable' : 'Enable' }}
+                                                </button>
+                                            </div>
+                                            <div class="col-md-6">
+                                                    <form action="{{ route('teacher.exercise.delete', ['exercise_id' => $item->id]) }}" method="POST" class="delete-form">
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-danger btn-block" onclick="return confirm('Apakah Anda yakin ingin menghapus latihan ini?')">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
+                                                    </form>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

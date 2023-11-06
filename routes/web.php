@@ -81,6 +81,8 @@ Route::group(['prefix' => 't', 'midddleware' => ['auth', 'isTeacher']], function
     Route::get('question/detail', [QuestionController::class, 'getQuestionDetail'])->name('teacher.question.detail');
     Route::post('question/update', [QuestionController::class, 'updateQuestion'])->name('teacher.question.update');
     Route::delete('question/delete', [QuestionController::class, 'deleteQuestion'])->name('teacher.question.delete');
+    Route::post('/exercise/delete/{exercise_id}', [ExerciseController::class, 'deleteExercise'])->name('teacher.exercise.delete');
+
 
 
     Route::get('exercise', [TeacherController::class, 'exercise'])->name('teacher.exercise');

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ExerciseQuestion;
+use Illuminate\Support\Facades\Redirect;
+
 use App\Models\Exercise;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -118,5 +121,19 @@ class ExerciseController extends Controller
         } else {
             return response()->json(['code' => 0, 'msg' => 'Latihan tidak ditemukan']);
         }
+    }
+
+    public function deleteExercise(Request $request, $exercise_id)
+    {
+        $exercise = Exercise::find($exercise_id);
+        if (!$exercise) {
+            return response()->json(['code' => 0, 'msg' => 'Latihan tidak ditemukan']);
+        }
+
+        // Hapus latihan pada tabel ExerciseQuestion
+        ExerciseQuestion::where('exercise_id', $exercise_id)->delete();
+
+        $exercise->delete();
+        return Redirect::back()->with(['code' => 1, 'msg' => 'Latihan berhasil dihapus']);
     }
 }

@@ -28,7 +28,7 @@ class QuestionController extends Controller
                     <i class="fa fa-trash"></i>
                 </button>';
             })
-            ->rawColumns(['actions'])
+            ->rawColumns(['actions', 'delete'])
             ->make(true);
     }
 

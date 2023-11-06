@@ -23,6 +23,11 @@ class QuestionController extends Controller
             </button>
             </div>';
             })
+            ->addColumn('delete', function ($row) {
+                return '<button id="deleteBtn" type="button" class="btn btn-danger btn-block" data-id="' . $row->id . '">
+                    <i class="fa fa-trash"></i>
+                </button>';
+            })
             ->rawColumns(['actions'])
             ->make(true);
     }

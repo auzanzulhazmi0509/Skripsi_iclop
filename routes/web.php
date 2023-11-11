@@ -38,6 +38,7 @@ Route::group(['prefix' => 'a', 'midddleware' => ['auth', 'isAdmin']], function (
     Route::post('year/update', [AcademicYearController::class, 'updateAcademicYear'])->name('admin.academic_year.update');
     Route::post('year/set-active', [AcademicYearController::class, 'setYearAsActive'])->name('admin.academic_year.setActive');
     Route::post('year/set-done', [AcademicYearController::class, 'setYearAsNonActive'])->name('admin.academic_year.setDone');
+    Route::delete('/admin/academic_year/delete', 'AdminController@deleteAcademicYear')->name('admin.academic_year.delete');
 
     Route::get('class', [AdminController::class, 'class'])->name('admin.class');
     Route::post('class/add', [ClassesController::class, 'addClass'])->name('admin.class.add');

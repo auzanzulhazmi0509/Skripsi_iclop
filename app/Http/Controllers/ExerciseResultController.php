@@ -96,7 +96,7 @@ class ExerciseResultController extends Controller
             })
             ->addColumn('actions', function ($row) {
                 return '<div class="btn-group" role="group">
-                <button class="lihat-jawaban btn btn-primary btn-block" data-id="' . $row->id . '">Lihat Jawaban</button>
+                <button class="lihat-jawaban btn btn-primary btn-block" data-id="' . $row->id . '"><i class="fa fa-eye"></i></button>
                 </div>';
             })
             ->rawColumns(['actions'])

@@ -19,27 +19,32 @@ class AcademicYearController extends Controller
                     <button id="detailTahunBtn" type="button" class="btn btn-primary" data-id="' . $row['id'] . '"
                     data-toggle="tooltip" data-placement="top" title="detail">
                     <i class="fa fa-info"></i>
-                    </button> 
+                    </button>
                     <button id="setAsActiveYearBtn" type="button" class="btn btn-success" data-id="' . $row['id'] . '"
                     data-toggle="tooltip" data-placement="top" title="Set As Aktif">
                     <i class="fa fa-check"></i>
-                    </button> 
+                    </button>
                     </div>';
                 } else {
                     return '<div class="btn-group" role="group">
                     <button id="detailTahunBtn" type="button" class="btn btn-primary" data-id="' . $row['id'] . '"
                     data-toggle="tooltip" data-placement="top" title="detail">
                     <i class="fa fa-info"></i>
-                    </button> 
+                    </button>
                     <button id="setAsNonActiveYearBtn" type="button" class="btn btn-danger" data-id="' . $row['id'] . '"
                     data-toggle="tooltip" data-placement="top" title="Set As Non Aktif">
                     <i class="fa fa-times"></i>
-                    </button> 
+                    </button>
                     </div>';
                 }
 
             })
-            ->rawColumns(['actions'])
+            ->addColumn('delete', function ($row) {
+                return '<button id="deleteBtn" type="button" class="btn btn-danger btn-block" data-id="' . $row->id . '">
+                    <i class="fa fa-trash"></i>
+                </button>';
+            })
+            ->rawColumns(['actions', 'delete'])
             ->make(true);
     }
 

@@ -49,5 +49,19 @@ class AdminController extends Controller
         $year = AcademicYear::where('status', 'Aktif')->get();
         return view('user.admin.student.index', compact('year'));
     }
+
+    public function deleteAcademicYear(Request $request)
+    {
+        $id = $request->input('id');
+        $academicYear = AcademicYear::find($id);
+
+        if (!$academicYear) {
+            return response()->json(['code' => 0, 'msg' => 'Tahun Ajaran Tidak Ditemukan.']);
+        }
+
+        $academicYear->delete();
+
+        return response()->json(['code' => 1, 'msg' => 'Tahun Ajaran Berhasil Dihapus.']);
+    }
 // End of Pages
 }

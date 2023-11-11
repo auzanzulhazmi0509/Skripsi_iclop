@@ -53,6 +53,7 @@
                                 <th>Semester</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
+                                <th>Hapus</th>
                             </thead>
                             <tbody></tbody>
                         </table>
@@ -177,6 +178,10 @@
                 {
                     data: "actions",
                     name: "actions",
+                },
+                {
+                    data: "delete",
+                    name: "delete",
                 },
             ],
         });
@@ -313,6 +318,29 @@
                         toastr.error(data.msg);
                     }
                 }, 'json');
+            }
+        });
+
+        $(document).on("click", "#deleteBtn", function () {
+            const id = $(this).data('id');
+            const url = "{{ route('admin.academic_year.delete') }}";
+            if (confirm("Apakah Anda yakin ingin menghapus Tahun Ajaran?")) {
+                $.ajax({
+                    url: url,
+                    type: 'DELETE',
+                    data: { id: id },
+                    success: function (data) {
+                        if (data.code == 1) {
+                            $('#academic_year_table').DataTable().ajax.reload(null, false);
+                            toastr.success(data.msg);
+                        } else {
+                            toastr.error(data.msg);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
             }
         });
     </script>

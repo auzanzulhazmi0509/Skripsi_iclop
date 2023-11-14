@@ -44,6 +44,8 @@ Route::group(['prefix' => 'a', 'midddleware' => ['auth', 'isAdmin']], function (
     Route::post('class/add', [ClassesController::class, 'addClass'])->name('admin.class.add');
     Route::get('class/detail', [ClassesController::class, 'getClassDetail'])->name('admin.class.detail');
     Route::post('class/update', [ClassesController::class, 'updateclass'])->name('admin.class.update');
+    Route::delete('/admin/class/delete', 'ClassesController@deleteClass')->name('admin.class.delete');
+
 
     Route::get('teacher', [AdminController::class, 'teacher'])->name('admin.teacher');
     Route::post('teacher/add', [TeacherController::class, 'addTeacher'])->name('admin.teacher.add');
@@ -119,6 +121,8 @@ Route::group(['prefix' => 't', 'midddleware' => ['auth', 'isTeacher']], function
 
 
     Route::get('studentclass/get/{class_id}', [ClassesStudentController::class, 'getClassStudentDataTable'])->name('teacher.student.getDatatable');
+    Route::post('student/remove-student-kelas', [ClassesStudentController::class, 'removeStudentFromClass'])->name('teacher.student.removeStudentFromClass');
+
 
 });
 

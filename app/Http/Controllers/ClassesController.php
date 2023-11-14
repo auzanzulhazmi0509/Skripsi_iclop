@@ -64,4 +64,25 @@ class ClassesController extends Controller
             }
         }
     }
+
+    public function deleteClass(Request $request)
+    {
+        $classId = $request->class_id;
+
+        $class = Classes::find($classId);
+
+        if (!$class) {
+            return response()->json(['code' => 0, 'msg' => 'Kelas tidak ditemukan']);
+        }
+
+        $deleteQuery = $class->delete();
+
+        if (!$deleteQuery) {
+            return response()->json(['code' => 0, 'msg' => 'Gagal menghapus kelas']);
+        } else {
+            return response()->json(['code' => 1, 'msg' => 'Kelas berhasil dihapus']);
+        }
+    }
+    
+
 }

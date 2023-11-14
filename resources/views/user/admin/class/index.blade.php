@@ -86,10 +86,17 @@
                                             {{ $item->teacher->{'nama'} }} <br>
                                             {{ $item->year->{'name'} }}
                                         </p>
-                                        <button class="btn btn-primary btn-block" id="classDetailBtn"
-                                            data-id={{ $item->{'id'} }}><b>Detail</b></button>
-                                        <a href="{{route('admin.student')}}" class="btn btn-success btn-block" id="classStudentBtn"
-                                            data-id={{ $item->{'id'} }}><b>Mahasiswa</b></a>
+                                        <a href="{{route('admin.student')}}" class="btn btn-success btn-block mb-3" id="classStudentBtn" data-id="{{ $item->{'id'} }}"><b>Mahasiswa</b></a>
+
+                                        <div class="row">
+                                            <div class="col-lg-6 mb-3">
+                                                <button class="btn btn-primary btn-block" id="classDetailBtn" data-id="{{ $item->{'id'} }}"><b>Detail</b></button>
+                                            </div>
+
+                                            <div class="col-lg-6 mb-3">
+                                                <button class="btn btn-danger btn-block deleteClassBtn" data-id="{{ $item->{'id'} }}"><i class="fa fa-trash"></i></button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -194,5 +201,33 @@
                 },
             });
         });
+
+        $(document).on("click", ".deleteClassBtn", function() {
+            const classId = $(this).data("id");
+            const url = '{{ route('admin.class.delete') }}';
+
+            if (confirm("Apakah Anda yakin ingin menghapus kelas ini?")) {
+                $.ajax({
+                    url: url,
+                    method: "DELETE",
+                    data: {
+                        class_id: classId,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(data) {
+                        if (data.code == 1) {
+                            toastr.success(data.msg);
+                            $("#class_container").load(location.href + " #class_container");
+                        } else {
+                            toastr.error(data.msg);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        toastr.error('Terjadi kesalahan saat menghapus kelas');
+                    }
+                });
+            }
+        });
+
     </script>
 @endsection

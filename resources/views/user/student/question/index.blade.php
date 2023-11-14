@@ -24,7 +24,8 @@
                 {{ $item->{'no'} . "."}}
                 {{ $item->{'description'} . "."}}
                 {{-- <div class="col-md-6"> --}}
-                    <embed src="{{ asset('storage/dql_soal/' . $item->guide) }}" type="application/pdf" style="width: 100%; height: 500px;">                    </div>
+                    <embed src="{{ asset('storage/dql_soal/' . $item->guide) }}" type="application/pdf" style="width: 100%; height: 500px;">
+                    </div>
                     {{-- <div class="col-md-6">
                         <embed src="{{ Storage::disk('local')->url('/dql_soal/' . $item->guide) }}" type="application/pdf" style="width: 100%; height: 500px;">
                     </div> --}}
@@ -60,12 +61,13 @@
                             @endif
                             <div class="col-3">
                                 <button id="runButton" class="btn btn-success w-100" data-toggle="tooltip"
-                                    data-placement="bottom" title="Run"><i class="fa fa-play"></i></button>
+                                data-placement="bottom" title="Run - Tombol ini akan menjalankan kode yang Anda tulis"><i class="fa fa-play"></i></button>
                             </div>
                             <div class="col-3">
                                 <button id="submitButton" class="btn btn-warning w-100" data-toggle="tooltip"
-                                    data-placement="bottom" title="Submit"><i class="fa-solid fa-check-to-slot"></i></button>
+                                data-placement="bottom" title="Submit - Tombol ini akan menyimpan jawaban Anda"><i class="fa-solid fa-check-to-slot"></i></button>
                             </div>
+
                         </div>
                         <div id="output" class="row mt-3"></div>
                     </div>
@@ -143,6 +145,11 @@
                 });
             }
         })
+
+        $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+
     </script>
     @endsection
 

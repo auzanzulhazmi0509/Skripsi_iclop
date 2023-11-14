@@ -117,11 +117,13 @@ class ExerciseController extends Controller
         if ($exercise) {
             $exercise->is_enabled = !$exercise->is_enabled;
             $exercise->save();
-            return response()->json(['code' => 1, 'msg' => 'Status latihan berhasil diperbarui']);
+            $status = $exercise->is_enabled ? 'di-Enable' : 'di-Disable';
+            return response()->json(['code' => 1, 'msg' => "Status latihan berhasil $status"]);
         } else {
             return response()->json(['code' => 0, 'msg' => 'Latihan tidak ditemukan']);
         }
     }
+
 
     public function deleteExercise(Request $request, $exercise_id)
     {

@@ -31,7 +31,7 @@
                                 <th>Soal</th>
                                 <th>Topik</th>
                                 <th>Deskripsi</th>
-                                <th>Aksi</th>
+                                <th>Edit</th>
                                 <th>Hapus</th>
                             </thead>
                             <tbody>

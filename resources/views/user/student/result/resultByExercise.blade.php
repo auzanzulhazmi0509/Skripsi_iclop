@@ -27,6 +27,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
+                        <div class="table-responsive">
                         <table id="tabel_nilai" class="table table-hover table-head-fixed text-nowrap" style="width: 100%">
                             <thead>
                                 <th>No</th>
@@ -40,6 +41,7 @@
 
                             </tbody>
                         </table>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -109,6 +109,8 @@
 
 @section('script')
     <script>
+        let class_id = 0;
+
         $("#class_student_table").DataTable({
             processing: true,
             info: true,
@@ -136,6 +138,29 @@
                 .replace("-1", class_id);
             $("#class_student_table").DataTable().ajax.url(url).load();
         });
+
+        // $(document).on("click", "#removeStudentFromClassBtn", function() {
+        //     const student_id = $(this).data('id');
+        //     alert(class_id);
+        //     const url = "{{ route('teacher.student.removeStudentFromClass') }}"
+        //     if (confirm("Hapus dari daftar Mahasiswa?")) {
+        //         $.post(url, {
+        //             student_id: student_id,
+        //             class_id: class_id
+        //         }, function(data) {
+        //             if (data.code == 1) {
+        //                 $('#all_student_table').DataTable().ajax.reload(null, false);
+
+        //                 var newurl = "{{ route('teacher.student.getDatatable', ['class_id' => -1]) }}"
+        //                     .replace("-1", class_id);
+        //                 $("#class_student_table").DataTable().ajax.url(newurl).load();
+        //                 toastr.success(data.msg);
+        //             } else {
+        //                 toastr.error(data.msg);
+        //             }
+        //         }, 'json');
+        //     }
+        // });
     </script>
 
 @endsection

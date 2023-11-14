@@ -34,7 +34,7 @@ class ClassesStudentController extends Controller
                 return '<div class="btn-group" role="group">
                 <button id="assignStudentToClassBtn" type="button" class="btn btn-info btn-block" data-id="' . $row['id'] . '">
                 <i class="fa fa-arrow-left"></i>
-                </button> 
+                </button>
                 </div>';
             })
             ->rawColumns(['actions'])
@@ -69,7 +69,7 @@ class ClassesStudentController extends Controller
                 return '<div class="btn-group" role="group">
                 <button id="removeStudentFromClassBtn" type="button" class="btn btn-danger btn-block" data-id="' . $row->student_id . '">
                 <i class="fa fa-arrow-right"></i>
-                </button> 
+                </button>
                 </div>';
             })
             ->rawColumns(['actions'])

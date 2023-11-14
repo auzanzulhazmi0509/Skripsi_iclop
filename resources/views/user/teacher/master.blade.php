@@ -106,25 +106,25 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{ route('teacher.exercise') }}" class="nav-link">
-                                        <i class="fa-solid fa-check"></i>
+                                        <i class="fa-solid fa-magnifying-glass"></i>
                                         <p>Latihan & Ujian</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('teacher.question') }}" class="nav-link">
-                                        <i class="fa-solid fa-check"></i>
+                                        <i class="fa-solid fa-magnifying-glass"></i>
                                         <p>Daftar Soal</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('teacher.class') }}" class="nav-link">
-                                        <i class="fa-solid fa-check"></i>
+                                        <i class="fa-solid fa-magnifying-glass"></i>
                                         <p>Kelas</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('teacher.exerciseResult') }}" class="nav-link">
-                                        <i class="fa-solid fa-check"></i>
+                                        <i class="fa-solid fa-magnifying-glass"></i>
                                         <p>Nilai</p>
                                     </a>
                                 </li>

@@ -46,8 +46,26 @@
                                     <span class="text-danger error-text topic_error"></span>
                                 </div>
                             </div>
-                            {{-- <div class="form-row">
-                                <div class="form-group col-sm-6">
+                            <div class="form-row">
+                                <div class="form-group col-sm-12">
+                                    <label for="dbname">Nama Database </label>
+                                    <span class="fas fa-question" data-toggle="tooltip_dbname"
+                                        data-placement="right"
+                                        title="Nama Database yang akan digunakan untuk pembelajaran."></span>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="dbname"
+                                            placeholder="Nama database">
+                                        <div class="input-group-append">
+                                            <div class="input-group-text">
+                                                <span class="fas fa-database"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span class="text-danger error-text dbname_error"></span>
+                                </div>
+                            </div>
+                            {{-- {{-- <div class="form-row"> --}}
+                                {{-- <div class="form-group col-sm-6">
                                     <label for="dbname">Nama Database</label>
                                     <span class="fas fa-question" data-toggle="tooltip_dbname" data-placement="right"
                                         title="Nama Database yang akan digunakan untuk pembelajaran."></span>
@@ -60,7 +78,7 @@
                                         </div>
                                     </div>
                                     <span class="text-danger error-text dbname_error"></span>
-                                </div>
+                                </div> --}}
                                 {{-- <div class="form-group col-sm-6">
                                     <label for="score">Skor</label>
                                     <div class="input-group">
@@ -103,7 +121,7 @@
                                         </div>
                                         <div class="testCodeBox" style="display: none;">
                                             <code style="display:block; white-space:pre-wrap">
-                                                "Query harus menampilkan semua data mahasiswa yang ada di dalam tabel"
+                                                "Tuliskan pesan feedback dengan contoh : Query berhasil menampilkan semua data mahasiswa yang ada di dalam tabel"
                                                 </code>
                                             <p>Dokumentasi selengkapnya dapat dilihat. Digunakan untuk feedback dari output jawaban <a
                                                     href="https://pgtap.org/documentation.html#results_eq" target="_blank">disini</a>
@@ -156,8 +174,8 @@
                             <div class="form-row">
                                 <div class="form-group col-sm-12">
                                     <label for="guidance_update">File Panduan</label>
-                                    <span class="fas fa-question" data-toggle="tooltip_requiredTable"
-                                        data-placement="right" title="Kosongi jika tidak mengubah file panduan."></span>
+                                    {{-- <span class="fas fa-question" data-toggle="tooltip_requiredTable"
+                                        data-placement="right" title="Kosongi jika tidak mengubah file panduan."></span> --}}
                                     <div class="input-group">
                                         <input type="file" class="form-control" name="guidance_update" data-value="">
                                         <div class="input-group-append">
@@ -167,8 +185,10 @@
                                         </div>
                                     </div>
                                     <span class="text-danger error-text guidance_update_error"></span>
+                                    <small class="text-muted">Kosongi jika tidak mengubah file panduan yang berisi materi soal.</small>
                                 </div>
                             </div>
+
                             <button type="submit" class="btn btn-warning btn-block">Simpan Perubahan</button>
                         </form>
                     </div>

@@ -87,7 +87,7 @@
                                             <span class="text-danger error-text topic_error"></span>
                                         </div>
                                     </div>
-                                    {{-- <div class="form-row">
+                                    <div class="form-row">
                                         <div class="form-group col-sm-12">
                                             <label for="dbname">Nama Database </label>
                                             <span class="fas fa-question" data-toggle="tooltip_dbname"
@@ -104,7 +104,7 @@
                                             </div>
                                             <span class="text-danger error-text dbname_error"></span>
                                         </div>
-                                    </div> --}}
+                                    </div>
                                     <div class="form-row">
                                         <div class="form-group col-sm-12">
                                             <label for="description">Deskripsi</label>
@@ -131,13 +131,14 @@
                                                         Contoh</button>
                                                 </div>
                                                 <div class="testCodeBox" style="display: none;">
-                                                    <code style="display:block; white-space:pre-wrap">
-                                                        "Query harus menampilkan semua data mahasiswa yang ada di dalam tabel"
-                                                        </code>
+                                                    <code style="display: block; white-space: pre-wrap; text-align: justify;">
+                                                        "Tuliskan pesan feedback dengan contoh : Query berhasil menampilkan semua data mahasiswa yang ada di dalam tabel"
+                                                    </code>
                                                     <p>Dokumentasi selengkapnya dapat dilihat. Digunakan untuk feedback dari output jawaban <a
                                                             href="https://pgtap.org/documentation.html#results_eq" target="_blank">disini</a>
                                                     </p>
                                                 </div>
+
                                             <div class="input-group">
                                                 <textarea rows="5" type="text" class="form-control" name="hint" placeholder="Hint"></textarea>
                                                 <div class="input-group-append">
@@ -196,6 +197,7 @@
                                                 </div>
                                             </div>
                                             <span class="text-danger error-text guidance_error"></span>
+                                            <small class="text-muted">File Panduan berisi materi soal pembelajaran dengan format PDF.</small>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-warning btn-block">Tambah</button>

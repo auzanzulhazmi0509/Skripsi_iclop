@@ -38,7 +38,7 @@ class QuestionController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required|string',
             'topic' => 'string',
-            // 'dbname' => 'required|string',
+            'dbname' => 'required|string',
             'description' => 'required|string',
             'hint' => 'string',
             'answer' => 'required|string',
@@ -60,7 +60,7 @@ class QuestionController extends Controller
                 Question::insert([
                     'title' => $request->title,
                     'topic' => $request->topic,
-                    // 'dbname' => $request->dbname,
+                    'dbname' => $request->dbname,
                     'description' => $request->description,
                     'hint' => $request->hint,
                     'answer' => $request->answer,
@@ -90,7 +90,7 @@ class QuestionController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required|string',
             'topic' => 'string',
-            // 'dbname' => 'required|string',
+            'dbname' => 'required|string',
             'description' => 'required|string',
             'answer' => 'required|string',
             // 'test_result' => 'required|string',
@@ -113,7 +113,7 @@ class QuestionController extends Controller
                     $task->update([
                         'title' => $request->title,
                         'topic' => $request->topic,
-                        // 'dbname' => $request->dbname,
+                        'dbname' => $request->dbname,
                         'description' => $request->description,
                         'hint' => $request->hint,
                         'answer' => $request->answer,
@@ -126,7 +126,7 @@ class QuestionController extends Controller
                 $task->update([
                     'title' => $request->title,
                     'topic' => $request->topic,
-                    // 'dbname' => $request->dbname,
+                    'dbname' => $request->dbname,
                     'description' => $request->description,
                     'hint' => $request->hint,
                     'answer' => $request->answer,

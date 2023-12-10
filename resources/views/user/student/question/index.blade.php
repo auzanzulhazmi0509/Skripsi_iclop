@@ -30,7 +30,7 @@
                         <embed src="{{ Storage::disk('local')->url('/dql_soal/' . $item->guide) }}" type="application/pdf" style="width: 100%; height: 500px;">
                     </div> --}}
                     <div class="col-md-6">
-                        <div class="editor" id="editor" style="height: 200px;"></div>
+                        <div class="editor" id="editor" style="height: 200px;" oncopy="return false" onpaste="return false" oncut="return false" ondrag="return false" ondrop="return false" contenteditable="false"></div>
                         <div class="row mt-3">
                             @if ($item->{'no'} <= 1)
                                 <div class="col-3">
@@ -95,6 +95,15 @@
         editor = ace.edit("editor");
         editor.setTheme("ace/theme/monokai");
         editor.session.setMode("ace/mode/pgsql");
+
+        document.getElementById('editor').onkeydown = function(e) {
+        if (e.ctrlKey === true && (e.key === 'c' || e.key === 'x' || e.key === 'v' || e.key === 'a')) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+    };
+
     </script>
 
     <script>
@@ -153,84 +162,4 @@
     </script>
     @endsection
 
-    {{-- @section('script')
-        <script>
-            $(document).ready(function() {
-                $('#runButton').click(function() {
-                    if (editor.getSession().getValue() == "") {
-                        alert("Silakan tulis jawaban anda terlebih dahulu!");
-                    } else {
-                        $("#runButton").attr("disabled", true);
-                        $("#runButton").html("<i class='fas fa-spinner'></i> Processing");
-                        $("#submitButton").attr("disabled", true);
-                        $("#submitButton").html("<i class='fas fa-ban'></i> Submit");
-                        $.ajax({
-                            url: "{{ route('student.runtest') }}",
-                            method: "POST",
-                            data: {
-                                code: editor.getSession().getValue(),
-                                question_id: "{{ $soal[0]->id }}",
-                            },
-                            success: function(response) {
-                                //$(".output").html(response);
-                                $("#output").html(response.result);
-                                $("#runButton").attr("disabled", false)
-                                $("#runButton").html("<i class='fas fa-play'></i> Run");
-                                $("#submitButton").attr("disabled", false);
-                                $("#submitButton").html("<i class='fas fa-check'></i> Submit");
-
-                            },
-                            error: function() {
-                                $(".output").html("Something went wrong!");
-                                $("#runButton").attr("disabled", false)
-                                $("#runButton").html("<i class='fas fa-play'></i> Run");
-                                $("#submitButton").attr("disabled", false);
-                                $("#submitButton").html("<i class='fas fa-check'></i> Submit");
-                            }
-                        });
-                    }
-                });
-
-                $('#submitButton').click(function() {
-                    $("#submitButton").attr("disabled", true);
-                    $("#submitButton").html("<i class='fas fa-spinner'></i> Processing");
-                    $("#runButton").attr("disabled", true);
-                    $("#runButton").html("<i class='fas fa-ban'></i> Run");
-                    $.ajax({
-                        url: "{{ route('student.submittest') }}",
-                        method: "POST",
-                        data: {
-                            code: editor.getSession().getValue(),
-                            task_id: "{{ $soal[0]->id }}",
-                            user_id: "{{ Auth::user()->id }}"
-                        },
-                        success: function(response) {
-                            $("#output").html(response.result);
-                            $("#submitButton").attr("disabled", false)
-                            $("#submitButton").html("<i class='fas fa-check'></i> Submit");
-                            $("#runButton").attr("disabled", false);
-                            $("#runButton").html("<i class='fas fa-play'></i> Run");
-                            if (response.status == 'passed') {
-                                toastr.success(response.message);
-                            } else {
-                                toastr.warning(response.message);
-                            }
-                        },
-                        error: function() {
-                            $("#output").html("Something went wrong!");
-                            $("#submitButton").attr("disabled", false)
-                            $("#submitButton").html("<i class='fas fa-check'></i> Submit");
-                            $("#runButton").attr("disabled", false);
-                            $("#runButton").html("<i class='fas fa-play'></i> Run");
-                        }
-                    });
-                });
-
-                $('#clearResult').click(function() {
-                    const output = document.getElementById("output-text");
-                    output.remove();
-                });
-
-            });
-        </script>
-    @endsection --}}
+    

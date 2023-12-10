@@ -12,13 +12,14 @@ class ValidatorController extends Controller
 {
     private $isAllowSubmit = false;
 
-    public function connect(){
-        if (!pg_connect("host=localhost port=5432 dbname=iclop user=postgres password=auzanzulhazmi")) {
-            throw new \Exception('SYSTEM_ERROR: Cant connect to database!');
-        }else{
-            return pg_connect("host=localhost port=5432 dbname=iclop user=postgres password=auzanzulhazmi");
-        }
 
+    public function connect($dbname)
+    {
+        if (!pg_connect("host=localhost port=5432 dbname=" . $dbname . " user=postgres password=auzanzulhazmi")) {
+            throw new \Exception('SYSTEM_ERROR: Cant connect to database!');
+        } else {
+            return pg_connect("host=localhost port=5432 dbname=" . $dbname . " user=postgres password=auzanzulhazmi");
+        }
     }
 
     public function execute_test($question_id, $connection, $code){
@@ -107,8 +108,18 @@ class ValidatorController extends Controller
         return $result;
     }
 
+    public function getDbName($question_id)
+    {
+        $question = Question::find($question_id);
+        if (!$question) {
+            throw new \Exception('Question not found!');
+        }
+        return $question->dbname;
+    }
+
     public function execute_code(Request $request){
-        $connection = $this->connect();
+        $dbname = $this->getDbName($request->question_id);
+        $connection = $this->connect($dbname);
         $stat = pg_connection_status($connection);
 
         if ($stat === PGSQL_CONNECTION_OK) {
@@ -127,7 +138,8 @@ class ValidatorController extends Controller
 
     public function submit(Request $request){
         # Execute code
-        $connection = $this->connect();
+        $dbname = $this->getDbName($request->question_id);
+        $connection = $this->connect($dbname);
         $result = $this->execute_test($request->question_id, $connection, $request->code);
         $test_result = $this->display_test_result($result);
         $this->disconnect_from_database($connection);

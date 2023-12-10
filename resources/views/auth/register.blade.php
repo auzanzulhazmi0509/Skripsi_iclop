@@ -15,6 +15,46 @@
     <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css?v=3.2.0')}}">
+
+    <style>
+        /* Custom styles can be added here */
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f4f6f9; /* Ubah sesuai kebutuhan */
+        }
+
+        .register-box {
+            margin: 5% auto;
+            width: 400px;
+            /* Ubah lebar sesuai kebutuhan */
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #007bff; /* Ubah warna header sesuai kebutuhan */
+            color: white;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        .btn-primary {
+            background-color: #007bff; /* Ubah warna tombol sesuai kebutuhan */
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Ubah warna hover sesuai kebutuhan */
+            border-color: #0056b3;
+        }
+    </style>
 </head>
 
 <body class="hold-transition register-page night-mode">
@@ -22,12 +62,11 @@
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
                 <a href="#" class="h1">
-                    <img src="{{ asset('dist/img/logo1.png') }}" width="35%"
-                    alt="User Image">
+                    <img src="{{ asset('dist/img/logo1.png') }}" width="35%" alt="User Image">
                     {{-- <b>iCLOP</b></a> --}}
             </div>
             <div class="card-body">
-                <p class="login-box-msg"><font size="5">Register</p>
+                <p class="login-box-msg" style="font-size: 24px;">Register</p>
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
                     @if ( Session::get('success'))
@@ -94,7 +133,6 @@
                         <div class="col-12">
                             <button type="submit" class="btn btn-primary btn-block">Register</button>
                         </div>
-
                     </div>
                 </form>
                 <a href="{{route('login')}}" class="text-center" style="font-size: 16px;">I already have a membership</a>

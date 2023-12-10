@@ -106,7 +106,7 @@
             <div class="float-right d-none d-sm-inline">
                 Politeknik Negeri Malang
             </div>
-            <strong>Copyright &copy; 2023 <a href="#">iCLOP</a>.</strong>
+            <strong>Copyright &copy; 2023 <a href="#">iCLOP</a> by Auzan IFZH</strong>
         </footer>
     </div>
 

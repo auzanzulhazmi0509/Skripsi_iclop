@@ -106,8 +106,7 @@
                             </div>
                         @endforelse
                     </div>
-                    {{ $classes->links() }}
-                </div>
+                    {{ $classes->onEachSide(1)->links('pagination::simple-bootstrap-4') }}                </div>
             </div>
             @include('user.admin.class.modal-edit-class')
         </div>

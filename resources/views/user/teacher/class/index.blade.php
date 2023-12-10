@@ -86,7 +86,7 @@
                                 <code>No Data</code>
                             </div>
                         @endforelse
-                        {{ $class->links() }}
+                        {{ $class->onEachSide(1)->links('pagination::simple-bootstrap-4') }}
                     </div>
                 </div>
                 <div class="col-lg-8 col-12">

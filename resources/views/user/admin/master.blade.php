@@ -151,7 +151,7 @@
             @yield('content')
         </div>
         <footer class="main-footer">
-            <strong>Copyright &copy; 2023 <a href="#">iCLOP</a>.</strong>
+            <strong>Copyright &copy; 2023 <a href="#">iCLOP</a> by Auzan IFZH</strong>
             <div class="float-right d-none d-sm-inline-block">
                 <b>Politeknik Negeri Malang</b>
             </div>

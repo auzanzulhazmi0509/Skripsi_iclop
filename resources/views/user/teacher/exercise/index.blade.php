@@ -108,7 +108,8 @@
                             </div>
                         @endforelse
                     </div>
-                    {{ $exercise->links() }}
+                    {{ $exercise->onEachSide(1)->links('pagination::simple-bootstrap-4') }}
+
                 </div>
             </div>
             @include('user.teacher.exercise.modal-edit-exercise')

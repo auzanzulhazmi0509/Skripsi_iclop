@@ -61,7 +61,7 @@
                             <span class="text-danger error-text start_date_error"></span>
                         </div>
                         <div class="form-group col-sm-6">
-                            <label for="end_date">Tanggal berkahir</label>
+                            <label for="end_date">Tanggal Berakhir</label>
                             <div class="input-group">
                                 <input type="date" class="form-control" name="end_date"
                                     placeholder="Tanggal berakhir" />
